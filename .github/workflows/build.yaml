@@ -31,7 +31,7 @@ jobs:
         run: npm install
         env:
           CYPRESS_INSTALL_BINARY: 0
-      - name: install
+      - name: build
         working-directory: ./wjh
         run: npm build
 
