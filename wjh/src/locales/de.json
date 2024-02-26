@@ -1,0 +1,27 @@
+{
+    "app": {
+        "name": "lostopf"
+    },
+    "views": {
+        "home": {
+            "title": "Startseite"
+        }
+    },
+    "nav": {
+        "benutzer": "Benutzer",
+        "start": "Startseite"
+    },
+    "actions": {
+        "close": "Schließen",
+        "start": "Startseite"
+    },
+    "auditingMetaData": {
+        "name": "Audit",
+        "fields": {
+            "createdBy": "Erfasst von",
+            "createdDate": "Erfasst am",
+            "lastModifiedBy": "Zuletzt geändert von",
+            "lastModifiedDate": "Zuletzt geändert am"
+        }
+    }
+}

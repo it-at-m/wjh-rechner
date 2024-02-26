@@ -1,0 +1,39 @@
+.required label::after {
+    padding-left: 6px;
+    color: rgb(var(--v-theme-error));
+    content: "*";
+}
+
+.mclass.v-btn {
+    font-size: 1.125rem !important;
+    letter-spacing: normal !important;
+}
+
+.mclass .v-field__outline__start {
+    border-radius: 0 !important;
+}
+
+.mclass .v-field__outline__end {
+    border-radius: 0 !important;
+}
+
+.mclass .v-field-label--floating {
+    opacity: unset !important;
+    color: rgb(var(--v-theme-neutral-grey));
+    font-size: 1.125rem !important;
+}
+
+.mclass .v-messages {
+    opacity: unset !important;
+}
+
+.mclass .v-messages__message {
+    color: rgb(var(--v-theme-neutral-grey));
+    font-size: .875rem;
+}
+
+.mclass .v-label.v-label--clickable {
+    opacity: unset !important;
+    color: rgb(var(--v-theme-neutral-grey));
+    font-size: 1.125rem;
+}
