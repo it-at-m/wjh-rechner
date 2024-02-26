@@ -1,2 +1,1 @@
-export const apiBaseUrl = '/api'
-export const topfName = 'test-topf'
+export const todoVariable = 'todo-value'

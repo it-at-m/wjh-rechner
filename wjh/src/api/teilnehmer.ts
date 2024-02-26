@@ -1,11 +1,11 @@
 import FetchUtils from './FetchUtils'
 
-import { apiBaseUrl } from '@/constants'
+import { todoVariable } from '@/constants'
 import { GetCodeDto } from './generatedTypes'
 
 export async function getCode(getCodeDto: GetCodeDto) {
   const response = await FetchUtils.fetchPOST(
-    `${apiBaseUrl}/getCode`,
+    `${todoVariable}/getCode`,
     getCodeDto,
     undefined,
     undefined

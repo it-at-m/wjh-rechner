@@ -1,5 +1,6 @@
 import { defineConfig } from "cypress";
 import vitePreprocessor from "cypress-vite";
+import codeCoverage from "@cypress/code-coverage/task";
 
 export default defineConfig({
   e2e: {
@@ -11,7 +12,7 @@ export default defineConfig({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setupNodeEvents(on, config) {
       on("file:preprocessor", vitePreprocessor());
-      require("@cypress/code-coverage/task")(on, config);
+      codeCoverage(on, config);
 
       // It's IMPORTANT to return the config object
       // with any changed environment variables

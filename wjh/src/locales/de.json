@@ -1,10 +1,10 @@
 {
     "app": {
-        "name": "lostopf"
-    },
-    "views": {
-        "home": {
-            "title": "Startseite"
+        "name": "WJH-Rechner",
+        "einverstaendnisabfrage": {
+            "title": "Einverständnisabfrage",
+            "message": "Die hier abgefragten Daten werden nicht abgespeichert, sondern nur für die Berechnung des erwarteten Judendhilfe-Zuschusses verwendet.",
+            "confirm": "Weiter"
         }
     },
     "nav": {
