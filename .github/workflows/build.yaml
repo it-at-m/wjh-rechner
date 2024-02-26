@@ -35,11 +35,9 @@ jobs:
         working-directory: ./wjh
         run: npm run build --no-package-lock
 
-      # Use cache to share the output across different jobs
-      # No need to cache node_modules because they are all bundled
-      - uses: actions/cache/save@v4
-        id: cache
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v4
         with:
-          path: ./wjh/outfile.cjs
-          key: ${{ github.sha }}-${{ hashFiles('pnpm-lock.yaml') }}
+          name: build-artifacts
+          path: ./wjh/dist
   
