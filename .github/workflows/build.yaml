@@ -26,10 +26,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: npm install
+      - run: npm install --prefix ./wjh
         env:
           CYPRESS_INSTALL_BINARY: 0
-      - run: npm build
+      - run: npm build --prefix ./wjh
 
       # Use cache to share the output across different jobs
       # No need to cache node_modules because they are all bundled
