@@ -43,6 +43,7 @@ jobs:
   
   build-and-push-image-to-ghcr:
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Echo Env Vars through Context
