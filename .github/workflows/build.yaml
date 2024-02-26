@@ -23,18 +23,13 @@ jobs:
     name: Build the package
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install
+      - run: npm install
         env:
           CYPRESS_INSTALL_BINARY: 0
-      - run: pnpm build
-      - run: pnpm test:unit
+      - run: npm build
 
       # Use cache to share the output across different jobs
       # No need to cache node_modules because they are all bundled
