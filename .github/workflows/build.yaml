@@ -17,3 +17,30 @@ jobs:
           policy-path: default.yaml
           token: ${{ secrets.GITHUB_TOKEN }}
           argvs: "--disable-dependabot --disable-secret-scanning --disable-code-scanning --display"
+  
+  build:
+    runs-on: ubuntu-latest
+    name: Build the package
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm install
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - run: pnpm build
+      - run: pnpm test:unit
+
+      # Use cache to share the output across different jobs
+      # No need to cache node_modules because they are all bundled
+      - uses: actions/cache/save@v4
+        id: cache
+        with:
+          path: outfile.cjs
+          key: ${{ github.sha }}-${{ hashFiles('pnpm-lock.yaml') }}
+  
