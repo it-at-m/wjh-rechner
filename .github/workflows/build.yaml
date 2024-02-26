@@ -28,12 +28,12 @@ jobs:
           node-version: 18
       - name: install
         working-directory: ./wjh
-        run: npm install
+        run: npm install --no-package-lock
         env:
           CYPRESS_INSTALL_BINARY: 0
       - name: build
         working-directory: ./wjh
-        run: npm build
+        run: npm build --no-package-lock
 
       # Use cache to share the output across different jobs
       # No need to cache node_modules because they are all bundled
