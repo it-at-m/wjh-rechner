@@ -49,12 +49,12 @@ jobs:
         run: |
           echo "$GITHUB_CONTEXT"
 
-      - name: List artifact contents
-        run: |
-          ls -R ./wjh
-
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: List artifact contents
+        run: |
+          ls -R ./wjh   
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
