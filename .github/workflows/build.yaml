@@ -17,7 +17,7 @@ jobs:
           policy-path: default.yaml
           token: ${{ secrets.GITHUB_TOKEN }}
           argvs: "--disable-dependabot --disable-secret-scanning --disable-code-scanning --display"
-  
+
   build:
     runs-on: ubuntu-latest
     name: Build the package
@@ -29,18 +29,18 @@ jobs:
       - name: install
         working-directory: ./wjh
         run: npm install --no-package-lock
-        env:
-          CYPRESS_INSTALL_BINARY: 0
       - name: build
         working-directory: ./wjh
         run: npm run build --no-package-lock
-
+      - name: test
+        working-directory: ./wjh
+        run: npm run cypress:run-ci
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: ./wjh/dist
-  
+
   build-and-push-image-to-ghcr:
     runs-on: ubuntu-latest
     needs: build
@@ -61,8 +61,8 @@ jobs:
 
       - name: List artifact contents
         run: |
-          ls -R ./wjh   
-      
+          ls -R ./wjh
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -81,7 +81,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
-      
+
       - name: Build and push untested Docker image to GHCR
         uses: docker/build-push-action@v5
         with:
