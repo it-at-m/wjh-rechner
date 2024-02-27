@@ -85,7 +85,7 @@ jobs:
       - name: Build and push untested Docker image to GHCR
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./wjh
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
