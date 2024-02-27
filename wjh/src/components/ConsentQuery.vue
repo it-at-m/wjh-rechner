@@ -2,7 +2,6 @@
   <v-dialog v-model="model" width="auto" class="consentQuery" persistent>
     <v-card
       variant="flat"
-      :border="20"
       :title="$t('app.consentQuery.title')"
       :text="$t('app.consentQuery.message')"
     >
@@ -22,7 +21,7 @@
 </style>
 
 <script setup lang="ts">
-import {defineModel} from 'vue'
+import { defineModel } from 'vue'
 
 const model = defineModel()
 

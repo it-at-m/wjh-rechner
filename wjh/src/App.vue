@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <consent-query v-model="confirmConsent" />
-    <home />
+    <home v-model="userData" />
   </v-app>
 </template>
 
@@ -11,6 +11,7 @@ import ConsentQuery from '@/components/ConsentQuery.vue';
 import { ref } from 'vue'
 
 const confirmConsent = ref(true)
+const userData = ref({})
 </script>
 
 <style>

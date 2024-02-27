@@ -44,6 +44,7 @@
             label="Default Label"
             placeholder="Placeholder"
             hint="Optional helper Text"
+            v-model="model.text"
           />
         </td>
         <td>
@@ -60,6 +61,7 @@
                 aria-describedby="example-text-input-hint"
                 placeholder="Placeholder"
                 required
+                v-model="model.text"
               />
             </div>
             <p class="m-hint" id="example-text-input-hint">Optional helper text</p>
@@ -224,11 +226,11 @@ td {
 }
 </style>
 
-<script lang="ts">
-export default {
-  data: () => ({
-    panel: [0, 1],
-    disabled: false
-  })
-}
+<script setup lang="ts">
+import { defineModel, ref } from 'vue'
+
+const model = defineModel()
+
+const panel = ref([0, 1])
+const disabled = ref(false)
 </script>
