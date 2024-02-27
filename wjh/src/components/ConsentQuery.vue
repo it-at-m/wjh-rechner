@@ -6,7 +6,7 @@
       :text="$t('app.consentQuery.message')"
     >
       <v-card-actions id="consentQuery-message">
-        <v-btn @click="confirm" variant="outlined">
+        <v-btn @click="confirm" variant="flat">
           {{ $t("app.consentQuery.confirm") }}
           <svg aria-hidden="true" class="m-button__icon">
             <use xlink:href="#icon-arrow-right"></use>

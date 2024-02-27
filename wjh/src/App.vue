@@ -1,12 +1,12 @@
 <template>
   <v-app>
     <consent-query v-model="confirmConsent" />
-    <home v-model="userData" />
+    <wjh-input v-model="userData" />
   </v-app>
 </template>
 
 <script setup lang="ts">
-import Home from '@/components/Home.vue';
+import WjhInput from '@/components/WjhInput.vue';
 import ConsentQuery from '@/components/ConsentQuery.vue';
 import { ref } from 'vue'
 
