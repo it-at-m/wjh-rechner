@@ -83,7 +83,7 @@ jobs:
           images: ghcr.io/${{ github.repository }}
       
       - name: Build and push untested Docker image to GHCR
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
