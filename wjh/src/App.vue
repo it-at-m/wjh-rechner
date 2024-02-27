@@ -1,16 +1,16 @@
 <template>
   <v-app>
-    <einverstaendnisabfrage />
+    <consent-query v-model="confirmConsent" />
     <home />
   </v-app>
 </template>
 
 <script setup lang="ts">
 import Home from '@/components/Home.vue';
-import Einverstaendnisabfrage from '@/components/Einverstaendnisabfrage.vue';
+import ConsentQuery from '@/components/ConsentQuery.vue';
 import { ref } from 'vue'
 
-const confirmConsent = ref(false)
+const confirmConsent = ref(true)
 </script>
 
 <style>

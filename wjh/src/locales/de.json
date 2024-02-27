@@ -1,7 +1,7 @@
 {
     "app": {
         "name": "WJH-Rechner",
-        "einverstaendnisabfrage": {
+        "consentQuery": {
             "title": "Einverständnisabfrage",
             "message": "Die hier abgefragten Daten werden nicht abgespeichert, sondern nur für die Berechnung des erwarteten Judendhilfe-Zuschusses verwendet.",
             "confirm": "Weiter"
