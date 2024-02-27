@@ -50,7 +50,7 @@
     "cross-env": "^7.0.3",
     "browserslist-to-esbuild": "^2.1.1",
     "concurrently": "^8.2.2",
-    "cypress": "12.14.0",
+    "cypress": "12.17.4",
     "cypress-multi-reporters": "^1.6.3",
     "cypress-vite": "^1.4.2",
     "eslint": "^8.57.0",
