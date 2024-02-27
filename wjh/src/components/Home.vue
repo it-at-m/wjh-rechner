@@ -228,8 +228,9 @@ td {
 
 <script setup lang="ts">
 import { defineModel, ref } from 'vue'
+import { userData } from '@/api/wjhTypes'
 
-const model = defineModel()
+const model = defineModel<userData>({ default: {}})
 
 const panel = ref([0, 1])
 const disabled = ref(false)

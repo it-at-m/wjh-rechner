@@ -6,7 +6,7 @@
       :text="$t('app.consentQuery.message')"
     >
       <v-card-actions id="consentQuery-message">
-        <v-btn @click="confirm" variant="muenchen" color="white">
+        <v-btn @click="confirm" variant="outlined">
           {{ $t("app.consentQuery.confirm") }}
           <svg aria-hidden="true" class="m-button__icon">
             <use xlink:href="#icon-arrow-right"></use>
@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { defineModel } from 'vue'
 
-const model = defineModel()
+const model = defineModel<boolean>()
 
 const confirm = () => {
   model.value = false;
