@@ -154,13 +154,29 @@
                 v-model="model.kitaKostenGeschwister"
               />
             </v-col>
+          </v-row>
+          <v-row>
             <v-col cols="12">
               <b>{{ $t("app.wjhErgebnis.belastbaresEinkommen") }}: </b>
               <span>{{ belastbaresEinkommen }}€</span>
-              <br />
+            </v-col>
+            <v-col cols="12">
+              <v-progress-linear
+                :max="model.kitaKosten"
+                :model-value="foerderung"
+                height="10em"
+                color="green"
+                bg-color="red"
+                bg-opacity="1"
+              />
+            </v-col>
+          </v-row>
+          <v-row justify="space-between">
+            <v-col cols="auto">
               <b>{{ $t("app.wjhErgebnis.foerderung") }}: </b>
               <span>{{ foerderung }}€</span>
-              <br />
+            </v-col>
+            <v-col cols="auto">
               <b>{{ $t("app.wjhErgebnis.eigenanteil") }}: </b>
               <span>{{ nichtGefoerderterBetrag }}€</span>
             </v-col>
