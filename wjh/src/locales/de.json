@@ -50,8 +50,8 @@
             }
         },
         "wjhErgebnis": {
-            "volleFoerderung": "Das Einkommen liegt unterhalb der geförderten Einkommensgrenze. Die Kosten werden vorraussichtlich komplett übernommen.",
-            "teilfoerderung": "Das Einkommen liegt über der geförderten Einkommensgrenze. Die Kosten werden nur zum Teil übernommen.",
+            "volleFoerderung": "Das Einkommen liegt innerhalb der geförderten Einkommensgrenze. Die Kosten werden vorraussichtlich komplett gefördert.",
+            "teilfoerderung": "Das Einkommen liegt über der komplett geförderten Einkommensgrenze. Die Kosten werden nur zum Teil gefördert.",
             "foerderung": "Förderung",
             "eigenanteil": "Eigenanteil",
             "belastbaresEinkommen": "Belastbares Einkommen"

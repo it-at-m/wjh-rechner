@@ -9,10 +9,10 @@
 import WjhEingabe from '@/components/WjhEingabe.vue';
 import Einverstaendnisabfrage from '@/components/Einverstaendnisabfrage.vue';
 import { ref } from 'vue'
-import { userData } from './api/wjhTypes';
+import { UserData } from './api/wjhTypes';
 
 const confirmConsent = ref(true)
-const userDataValue = ref({})
+const userDataValue = ref(new UserData())
 </script>
 
 <style>

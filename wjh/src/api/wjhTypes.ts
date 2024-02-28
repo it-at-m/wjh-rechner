@@ -4,7 +4,7 @@
 
 export class UserData {
   familieneinkommen : number = 0;
-  personenImHaushalt?: number = 1;
+  personenImHaushalt?: number;
   appartementSize?: number = 0;
   miete?: number = 0;
   otherReductions?: number = 0;

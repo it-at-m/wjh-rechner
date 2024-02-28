@@ -1,6 +1,6 @@
 <template>
   <h1>{{ $t("app.name") }}</h1>
-  <v-stepper v-model="step" @keyup.enter="nextStep">
+  <v-stepper v-model="step">
     <v-stepper-header>
         <v-stepper-item
           v-for="step in steps"
@@ -14,7 +14,7 @@
         />
     </v-stepper-header>
     <v-stepper-window>
-      <v-stepper-window-item value="grunddaten">
+      <v-stepper-window-item value="grunddaten" @keyup.enter="grunddatenNext">
         <v-container>
           <v-row>
             <v-col cols="12">
@@ -58,7 +58,7 @@
           </v-row>
         </v-container>
       </v-stepper-window-item>
-      <v-stepper-window-item value="wohnung">
+      <v-stepper-window-item value="wohnung" @keyup.enter="wohnungNext">
         <v-container>
           <v-row>
             <v-col cols="12">
@@ -71,7 +71,7 @@
                 v-model="model.miete"
               />
             </v-col>
-            <v-col cols="12" v-if="mietobergrenze < model.miete">
+            <v-col cols="12" v-if="mietobergrenze < (model.miete ?? 0)">
               <v-alert type="info" color="primary">
                 <b>{{ $t("app.wjhEingabe.mietobergrenze.label") }}: </b>
                 <span>{{ mietobergrenze }}€</span>
@@ -92,7 +92,7 @@
             <v-col cols="12">
               <v-alert type="info" color="primary" v-if="uebersteigendesEinkommen">
                 <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
-                <span>{{ Math.round(uebersteigendesEinkommen * 0.3) }}€</span>
+                <span>{{ eigenanteil }}€</span>
                 <br />
                 <span>
                   {{ $t("app.wjhEingabe.eigenanteil.description") }}
@@ -102,46 +102,6 @@
           </v-row>
           <v-row justify="end">
             <v-btn @click="wohnungNext">
-              {{ $t("app.wjhEingabe.steps.weiter") }}
-              <svg aria-hidden="true" class="m-button__icon">
-                <use xlink:href="#icon-arrow-right"></use>
-              </svg>
-            </v-btn>
-          </v-row>
-        </v-container>
-      </v-stepper-window-item>
-      <v-stepper-window-item
-        value="reductions"
-      >
-        <v-container>
-          <v-row>
-            <v-col cols="12">
-              <b>{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: </b>
-              <span>{{ uebersteigendesEinkommen }}€</span>
-            </v-col>
-            <v-col cols="12">
-              <v-alert type="info">
-                {{ $t("app.wjhEingabe.reduzierungInfo") }}
-              </v-alert>
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                v-if="familyDataRequired"
-                class="required"
-                :label="$t('app.wjhEingabe.otherReductions.label')"
-                :placeholder="$t('app.wjhEingabe.otherReductions.label')"
-                type="number"
-                :hint="$t('app.wjhEingabe.otherReductions.description')"
-                v-model="model.otherReductions"
-              />
-            </v-col>
-            <v-col cols="12">
-              <b>{{ $t("app.wjhEingabe.uebersteigendesEinkommenReduziert") }}: </b>
-              <span>{{ uebersteigendesEinkommenReduziert }}€</span>
-            </v-col>
-          </v-row>
-          <v-row justify="end">
-            <v-btn @click="reductionsNext">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -166,7 +126,7 @@
                 <span>{{ uebersteigendesEinkommen }}€</span>
                 <br />
                 <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
-                <span>{{ Math.round(uebersteigendesEinkommen * 0.3) }}€</span>
+                <span>{{ eigenanteil }}€</span>
                 <br />
                 <span>
                   {{ $t("app.wjhEingabe.eigenanteil.description") }}
@@ -181,7 +141,6 @@
                 :label="$t('app.wjhEingabe.kitaKosten.label')"
                 :placeholder="$t('app.wjhEingabe.kitaKosten.label')"
                 type="number"
-                :hint="$t('app.wjhEingabe.kitaKosten.description')"
                 v-model="model.kitaKosten"
               />
             </v-col>
@@ -203,7 +162,7 @@
               <span>{{ foerderung }}€</span>
               <br />
               <b>{{ $t("app.wjhErgebnis.eigenanteil") }}: </b>
-              <span>{{ eigenanteil }}€</span>
+              <span>{{ nichtGefoerderterBetrag }}€</span>
             </v-col>
           </v-row>
         </v-container>
@@ -222,6 +181,7 @@ import { grundbetrag, getGrundbetragMitFamilie, getMietobergrenze } from '@/cons
 import { useI18n } from "vue-i18n";
 const { t } = useI18n({ useScope: "global" });
 
+// Verwaltung des aktiven Schrittes im stepper
 const steps = [
   { value: "grunddaten", icon: "mdi-cash" },
   { value: "wohnung", icon: "mdi-home" },
@@ -239,10 +199,7 @@ watch(stepNumber, (newValue : number) => {
   maxStepNumber = Math.max(newValue, maxStepNumber);
 })
 
-const nextStep = () => {
-  step.value = steps[stepNumber.value + 1].value
-}
-
+// Funktion, die vom Schritt "grunddaten" aus weiter springt.
 const grunddatenNext = () => {
   if(grundbetragAusreichend.value) {
     step.value = "wohnung";
@@ -250,55 +207,66 @@ const grunddatenNext = () => {
     step.value = "ergebnis";
   }
 }
-
+// Funktion, die vom Schritt "wohnung" aus weiter springt.
 const wohnungNext = () => {
   step.value = "ergebnis";
 }
 
+// In der Eingabemaske verwendete Daten.
 const model = defineModel<UserData>({ default: {}})
 
+// Grundbetrag der Einkommensgrenze inklusive des Familianzuschlags.
 const grundbetragMitFamilie = computed(() => {
   return getGrundbetragMitFamilie(model.value.personenImHaushalt ?? 1);
 })
 
+// Obergrenze der Miete, die in die Einkommensgrenze einfließen kann.
 const mietobergrenze = computed(() => {
   const mietobergrenze = getMietobergrenze(model.value.personenImHaushalt ?? 1);
   return mietobergrenze.miete;
 })
 
+// Für die Miete tatsächlich verwenteter Wert
 const verwendeteMiete = computed(() => {
   return Math.min(mietobergrenze.value, model.value.miete ?? 0);
 })
 
+// Grenze des Einkommens, das nicht für Kita-Kosten belastet wird.
 const einkommensgrenze = computed(() => {
   return verwendeteMiete.value + grundbetragMitFamilie.value;
 })
 
+// Anteil des Einkommens, der die Einkommensgrenze überschreitet.
 const uebersteigendesEinkommen = computed(() => {
   return Math.max(0, (model.value.familieneinkommen ?? 0) - einkommensgrenze.value);
 })
 
-const belastbaresEinkommen = computed(() => {
-  return Math.max(0, Math.round(uebersteigendesEinkommen.value / 3) - (model.value.kitaKostenGeschwister ?? 0));
+// Anteil des Einkommens, der für die Kita-Kosten belastet wird.
+const eigenanteil = computed(() => {
+  return Math.round(uebersteigendesEinkommen.value * 0.3);
 })
 
-const eigenanteil = computed(() => {
+// Anteil des Einkommens, der für die Kita-Kosten belastet wird.
+const belastbaresEinkommen = computed(() => {
+  return Math.max(0, eigenanteil.value - (model.value.kitaKostenGeschwister ?? 0));
+})
+
+// Anteil der Kitakosten, die vorraussichtlich selbst gezahlt werden müssen.
+const nichtGefoerderterBetrag = computed(() => {
   return Math.min(belastbaresEinkommen.value, (model.value.kitaKosten ?? 0));
 })
-
+// Anteil der Kitakosten, der vorraussichtlich gefördert wird.
 const foerderung = computed(() => {
-  return Math.max(0, (model.value.kitaKosten ?? 0) - eigenanteil.value);
+  return Math.max(0, (model.value.kitaKosten ?? 0) - nichtGefoerderterBetrag.value);
 })
 
 // Status-Felder
+// Gibt an, ob der grundbetragMitFamilie bereits hoch genug ist um eine komplette Förderung zu erhalten.
 const grundbetragAusreichend = computed(() => {
   return grundbetragMitFamilie.value < (model.value.familieneinkommen ?? 0);
 })
 
-const einkommensgrenzeUeberschritten = computed(() => {
-  return einkommensgrenze.value < (model.value.familieneinkommen ?? 0);
-})
-
+// Gibt an, ob vorraussichtlich mit einer vollen Förderung gerechnet werden kann.
 const volleFoerderung = computed(() => {
   return uebersteigendesEinkommen.value <= 0;
 })
