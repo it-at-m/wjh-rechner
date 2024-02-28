@@ -47,7 +47,7 @@
               </v-alert>
             </v-col>
           </v-row>
-          <v-row justify="end">
+          <v-row justify="end" class="px-3">
             <v-btn @click="grunddatenNext">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
@@ -99,7 +99,7 @@
               </v-alert>
             </v-col>
           </v-row>
-          <v-row justify="end">
+          <v-row justify="end" class="px-3">
             <v-btn @click="wohnungNext">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
