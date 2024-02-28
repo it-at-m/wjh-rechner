@@ -54,9 +54,11 @@
         "wjhErgebnis": {
             "volleFoerderung": "Das Einkommen liegt innerhalb der geförderten Einkommensgrenze. Die Kosten werden vorraussichtlich komplett gefördert.",
             "teilfoerderung": "Das Einkommen liegt über der komplett geförderten Einkommensgrenze. Die Kosten werden nur zum Teil gefördert.",
-            "foerderung": "Förderung",
+            "foerderung": "Wirtschaftliche Jugendhilfe",
             "eigenanteil": "Eigenanteil",
-            "belastbaresEinkommen": "Belastbares Einkommen"
+            "belastbaresEinkommen": "Belastbares Einkommen",
+            "title": "Orientierungsergebnis",
+            "hint": "Die angezeigten Informationen erheben nicht den Anspruch der vollständigen Berücksichtigung aller Spezialfälle, sondern dienen lediglich einer Orientierung, ob die Beantragung der Förderung aussichtsreich ist. Die tatsächliche Höhe der Förderung kann von den hier angezeigten Ergebnissen abweichen."
         }
     },
     "actions": {

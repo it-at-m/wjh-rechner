@@ -82,12 +82,10 @@
               </v-alert>
             </v-col>
             <v-col cols="12">
-              <b>{{ $t("app.wjhEingabe.einkommensgrenze") }}: </b>
-              <span>{{ einkommensgrenze }}€</span>
+              <span class="m-label">{{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€</span>
             </v-col>
             <v-col cols="12">
-              <b>{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: </b>
-              <span>{{ uebersteigendesEinkommen }}€</span>
+              <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
             </v-col>
             <v-col cols="12">
               <v-alert type="info" color="primary" v-if="uebersteigendesEinkommen">
@@ -113,6 +111,10 @@
       <v-stepper-window-item value="ergebnis">
         <v-container>
           <v-row>
+            <v-col cols="12" class="py-0">
+              <h3 class="m-label">{{ $t("app.wjhErgebnis.title") }}</h3>
+              <span class="m-hint">{{ $t("app.wjhErgebnis.hint") }}</span>
+            </v-col>
             <v-col v-if="volleFoerderung">
               <v-alert type="success">
                 {{ $t("app.wjhErgebnis.volleFoerderung") }}
@@ -157,8 +159,7 @@
           </v-row>
           <v-row>
             <v-col cols="12">
-              <b>{{ $t("app.wjhErgebnis.belastbaresEinkommen") }}: </b>
-              <span>{{ belastbaresEinkommen }}€</span>
+              <span class="m-label">{{ $t("app.wjhErgebnis.belastbaresEinkommen") }}: {{ belastbaresEinkommen }}€</span>
             </v-col>
             <v-col cols="12">
               <v-progress-linear
@@ -174,12 +175,10 @@
           </v-row>
           <v-row justify="space-between">
             <v-col cols="auto">
-              <b>{{ $t("app.wjhErgebnis.foerderung") }}: </b>
-              <span>{{ foerderung }}€</span>
+              <span class="m-label">{{ $t("app.wjhErgebnis.foerderung") }}: {{ foerderung }}€</span>
             </v-col>
             <v-col cols="auto">
-              <b>{{ $t("app.wjhErgebnis.eigenanteil") }}: </b>
-              <span>{{ nichtGefoerderterBetrag }}€</span>
+              <span class="m-label">{{ $t("app.wjhErgebnis.eigenanteil") }}: {{ nichtGefoerderterBetrag }}€</span>
             </v-col>
           </v-row>
         </v-container>
