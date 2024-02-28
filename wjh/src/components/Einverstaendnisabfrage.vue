@@ -5,6 +5,11 @@
       :title="$t('app.einverstaendnisabfrage.label')"
     >
       <v-card-text>
+        <v-alert type="info" color="primary">
+          <span>{{ $t("app.haftungsausschluss") }}</span>
+          <br />
+          <span>{{ $t("app.haftungsausschlussSpezialfaelle") }}</span>
+        </v-alert>
         <span>{{ $t("app.einverstaendnisabfrage.message") }}</span>
       </v-card-text>
       <v-card-actions id="einverstaendnisabfrage-message" class="justify-end">

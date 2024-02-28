@@ -1,5 +1,4 @@
 <template>
-  <h1>{{ $t("app.name") }}</h1>
   <v-stepper v-model="step">
     <v-stepper-header>
         <v-stepper-item
@@ -163,10 +162,11 @@
             <v-col cols="12">
               <v-progress-linear
                 :max="model.kitaKosten"
-                :model-value="foerderung"
+                :model-value="nichtGefoerderterBetrag"
                 height="10em"
-                color="green"
-                bg-color="red"
+                bg-color="success"
+                color="error"
+                reverse
                 bg-opacity="1"
               />
             </v-col>

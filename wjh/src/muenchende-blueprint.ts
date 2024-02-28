@@ -67,7 +67,8 @@ export const muenchendeBlueprint: Blueprint = {
           'secondary-lighten-1': '#FF80AB',
 
           accent: '#FFE400',
-          error: '#984447'
+          error: '#984447',
+          success: '#3A7F53'
         },
       },
     },

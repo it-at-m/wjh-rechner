@@ -1,9 +1,11 @@
 {
     "app": {
         "name": "Orientierungsrechner zur wirtschaftlichen Jugendhilfe",
+        "haftungsausschluss": "Für die Richtigkeit der Berechnung wird keine Haftung übernommen.",
+        "haftungsausschlussSpezialfaelle": "Die angezeigten Informationen erheben nicht den Anspruch der vollständigen Berücksichtigung aller Spezialfälle.",
         "einverstaendnisabfrage": {
             "label": "Einverständnisabfrage",
-            "message": "Um Ihre Angaben zu bearbeiten, benötigen wir von Ihnen personenbezogene Daten. Diese Daten erheben wir nur im notwendigen Umfang. Wir halten uns an die Datenschutzgesetze und geltenden Vorschriften. Weitergehende Informationen finden Sie in der Datenschutzerklärung zu dem von Ihnen gewählten Online-Dienst der Landeshauptstadt München. Bitte beachten Sie dazu auch die Hinweise zum Datenschutz im Impressum der Landeshauptstadt München.",
+            "message": "Die Berechnungen finden ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
             "confirm": "Weiter zum Rechner"
         },
         "wjhEingabe": {

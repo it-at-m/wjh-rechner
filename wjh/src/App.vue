@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <h1 class="px-4">{{ $t("app.name") }}</h1>
     <einverstaendnisabfrage v-model="confirmConsent" />
     <wjh-eingabe v-model="userDataValue" />
   </v-app>
