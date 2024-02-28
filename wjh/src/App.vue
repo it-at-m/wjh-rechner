@@ -1,17 +1,18 @@
 <template>
   <v-app>
-    <consent-query v-model="confirmConsent" />
-    <wjh-input v-model="userData" />
+    <einverstaendnisabfrage v-model="confirmConsent" />
+    <wjh-eingabe v-model="userDataValue" />
   </v-app>
 </template>
 
 <script setup lang="ts">
-import WjhInput from '@/components/WjhInput.vue';
-import ConsentQuery from '@/components/ConsentQuery.vue';
+import WjhEingabe from '@/components/WjhEingabe.vue';
+import Einverstaendnisabfrage from '@/components/Einverstaendnisabfrage.vue';
 import { ref } from 'vue'
+import { userData } from './api/wjhTypes';
 
 const confirmConsent = ref(true)
-const userData = ref({})
+const userDataValue = ref({})
 </script>
 
 <style>

@@ -1,15 +1,61 @@
 {
     "app": {
-        "name": "WJH-Rechner",
-        "consentQuery": {
-            "title": "Einverständnisabfrage",
-            "message": "Die hier abgefragten Daten werden nicht abgespeichert, sondern nur für die Berechnung des erwarteten Judendhilfe-Zuschusses verwendet.",
-            "confirm": "Weiter"
+        "name": "Orientierungsrechner zur wirtschaftlichen Jugendhilfe",
+        "einverstaendnisabfrage": {
+            "label": "Einverständnisabfrage",
+            "message": "Um Ihre Angaben zu bearbeiten, benötigen wir von Ihnen personenbezogene Daten. Diese Daten erheben wir nur im notwendigen Umfang. Wir halten uns an die Datenschutzgesetze und geltenden Vorschriften. Weitergehende Informationen finden Sie in der Datenschutzerklärung zu dem von Ihnen gewählten Online-Dienst der Landeshauptstadt München. Bitte beachten Sie dazu auch die Hinweise zum Datenschutz im Impressum der Landeshauptstadt München.",
+            "confirm": "Weiter zum Rechner"
+        },
+        "wjhEingabe": {
+            "steps": {
+                "grunddaten": "Grunddaten",
+                "wohnung": "Miete",
+                "ergebnis": "Kita-Kosten",
+                "weiter": "Weiter"
+            },
+            "familieneinkommen": {
+                "label": "Netto-Familieneinkommen (mtl.)",
+                "description": "Die wirtschaftliche Jugendhilfe ist abhängig vom Einkommen der gesamten Familie. Dazu zählen auch Kindergeld und Sozialhilfe."
+            },
+            "personenImHaushalt": {
+                "label": "Anzahl der Personen im Haushalt",
+                "description": "Durch die Anzahl der Familienmitglieder wird der Grund-Freibetrag erhöht, sowie die Mietobergrenzen bestimmt."
+            },
+            "grundbetragMitFamilie": {
+                "label": "Grundbetrag mit Familienzuschlag",
+                "description": "Dieser Anteil des Einkommens wird für die Ermittlung der Förderung als Grundbetrag verwendet und nicht belastet."
+            },
+            "einkommensgrenze": "Einkommensgrenze",
+            "uebersteigendesEinkommen": "Übersteigendes Einkommen",
+            "wohnungInfo": "In die Einkommensgrenze werden noch um die Kosten der Miete eingerechnet. Dabei gibt es allerdings Mietobergrenzen, die stattdessen verwendet werden, wenn die Miete darüber liegt.",
+            "miete": {
+                "label": "Mietkosten",
+                "description": "Die Mietkosten werden ebenfalls auf das anrechenbare Einkommen aufgeschlagen."
+            },
+            "mietobergrenze": {
+                "label": "Mietobergrenze",
+                "description": "Die Miete liegt über dem maximal anrechenbaren Wert. Es wird daher die Mietobergrenze für die weitere Berechnung verwendet."
+            },
+            "uebersteigendesEinkommenReduziert": "Übersteigendes Einkommen",
+            "eigenanteil": {
+                "label": "Eigenanteil (30%)",
+                "description": "Dieser Anteil des Einkommens wird für die Kita-Kosten belastet."
+            },
+            "kitaKosten": {
+                "label": "Kita-Kosten"
+            },
+            "kitaKostenGeschwister": {
+                "label": "Kita-Kosten Geschwister",
+                "description": "Nicht geförderte Kita-Kosten der Geschwister."
+            }
+        },
+        "wjhErgebnis": {
+            "volleFoerderung": "Das Einkommen liegt unterhalb der geförderten Einkommensgrenze. Die Kosten werden vorraussichtlich komplett übernommen.",
+            "teilfoerderung": "Das Einkommen liegt über der geförderten Einkommensgrenze. Die Kosten werden nur zum Teil übernommen.",
+            "foerderung": "Förderung",
+            "eigenanteil": "Eigenanteil",
+            "belastbaresEinkommen": "Belastbares Einkommen"
         }
-    },
-    "nav": {
-        "benutzer": "Benutzer",
-        "start": "Startseite"
     },
     "actions": {
         "close": "Schließen",

@@ -1,13 +1,15 @@
 <template>
-  <v-dialog v-model="model" width="auto" class="consentQuery" persistent>
+  <v-dialog v-model="model" width="70%" class="einverstaendnisabfrage" persistent>
     <v-card
       variant="flat"
-      :title="$t('app.consentQuery.title')"
-      :text="$t('app.consentQuery.message')"
+      :title="$t('app.einverstaendnisabfrage.label')"
     >
-      <v-card-actions id="consentQuery-message">
+      <v-card-text>
+        <span>{{ $t("app.einverstaendnisabfrage.message") }}</span>
+      </v-card-text>
+      <v-card-actions id="einverstaendnisabfrage-message" class="justify-end">
         <v-btn @click="confirm" variant="flat">
-          {{ $t("app.consentQuery.confirm") }}
+          {{ $t("app.einverstaendnisabfrage.confirm") }}
           <svg aria-hidden="true" class="m-button__icon">
             <use xlink:href="#icon-arrow-right"></use>
           </svg>

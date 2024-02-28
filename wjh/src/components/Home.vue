@@ -197,17 +197,17 @@
 
             <v-expansion-panels v-model="panel" :disabled="disabled" multiple variant="accordion">
               <v-expansion-panel elevation="2">
-                <v-expansion-panel-title>Panel 1</v-expansion-panel-title>
+                <v-expansion-panel-label>Panel 1</v-expansion-panel-label>
                 <v-expansion-panel-text> Some content </v-expansion-panel-text>
               </v-expansion-panel>
 
               <v-expansion-panel elevation="2">
-                <v-expansion-panel-title>Panel 2</v-expansion-panel-title>
+                <v-expansion-panel-label>Panel 2</v-expansion-panel-label>
                 <v-expansion-panel-text> Some content </v-expansion-panel-text>
               </v-expansion-panel>
 
               <v-expansion-panel elevation="2">
-                <v-expansion-panel-title>Panel 3</v-expansion-panel-title>
+                <v-expansion-panel-label>Panel 3</v-expansion-panel-label>
                 <v-expansion-panel-text> Some content </v-expansion-panel-text>
               </v-expansion-panel>
             </v-expansion-panels>
@@ -216,6 +216,12 @@
         <td></td>
       </tr>
     </tbody>
+    <span>Bei Familien, die eine der folgenden Leistungen beziehen, können Elternbeiträge ohne Prüfung der Einkommensverhältnisse übernommen werden:</span>
+    <ul>
+      <li>Leistungen nach dem SGB II, dem SGB XII oder dem Asylbewerberleistungsgesetz</li>
+      <li>Kinderzuschlag nach § 6a Bundeskindergeldgesetz</li>
+      <li>Wohngeld nach dem Wohngeldgesetz</li>
+    </ul>
   </v-table>
 </template>
 
@@ -228,9 +234,9 @@ td {
 
 <script setup lang="ts">
 import { defineModel, ref } from 'vue'
-import { userData } from '@/api/wjhTypes'
+import { UserData } from '@/api/wjhTypes'
 
-const model = defineModel<userData>({ default: {}})
+const model = defineModel<UserData>({ default: {}})
 
 const panel = ref([0, 1])
 const disabled = ref(false)
