@@ -7,6 +7,7 @@
           :value="step.value"
           :title="$t(`app.wjhEingabe.steps.${step.value}`)"
           :icon="step.icon"
+          :edit-icon="step.editIcon ?? 'mdi-pencil'"
           complete-icon="mdi-check"
           :complete="getStepNumber(step.value) < stepNumber"
           :editable="getStepNumber(step.value) <= maxStepNumber"
@@ -199,8 +200,8 @@ const { t } = useI18n({ useScope: "global" });
 
 // Verwaltung des aktiven Schrittes im stepper
 const steps = [
-  { value: "grunddaten", icon: "mdi-cash" },
-  { value: "wohnung", icon: "mdi-home" },
+  { value: "grunddaten", icon: "mdi-cash", editIcon: "mdi-cash-edit" },
+  { value: "wohnung", icon: "mdi-home", editIcon: "mdi-home-edit" },
   { value: "ergebnis", icon: "mdi-information" }
 ]
 const step = ref("grunddaten")
