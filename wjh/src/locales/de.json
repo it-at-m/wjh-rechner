@@ -14,7 +14,8 @@
                 "wohnung": "Miete",
                 "kitakosten": "Kinderbetreuungskosten",
                 "ergebnis": "Ergebnis",
-                "weiter": "Weiter"
+                "weiter": "Weiter",
+                "zurueck": "Zurück"
             },
             "familieneinkommen": {
                 "label": "Familieneinkommen (monatlich, netto)",

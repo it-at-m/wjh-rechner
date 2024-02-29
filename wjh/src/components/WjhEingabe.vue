@@ -98,7 +98,13 @@
               <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
             </v-col>
           </v-row>
-          <v-row justify="end" class="px-3">
+          <v-row justify="space-between" class="px-3">
+            <v-btn @click="step='grunddaten'">
+              <svg aria-hidden="true" class="m-button__icon ml-0 mr-2">
+                <use xlink:href="#icon-arrow-left"></use>
+              </svg>
+              {{ $t("app.wjhEingabe.steps.zurueck") }}
+            </v-btn>
             <v-btn @click="wohnungNext" :disabled="!wohnungValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
@@ -150,7 +156,13 @@
               </v-alert>
             </v-col>
           </v-row>
-          <v-row justify="end" class="px-3">
+          <v-row justify="space-between" class="px-3">
+            <v-btn @click="step='wohnung'">
+              <svg aria-hidden="true" class="m-button__icon ml-0 mr-2">
+                <use xlink:href="#icon-arrow-left"></use>
+              </svg>
+              {{ $t("app.wjhEingabe.steps.zurueck") }}
+            </v-btn>
             <v-btn @click="kitakostenNext" :disabled="!kitakostenValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
@@ -273,18 +285,14 @@ const grunddatenNext = () => {
     if(grundbetragAusreichend.value) {
       step.value = "wohnung";
     } else {
-      step.value = "ergebnis";
+      step.value = "kitakosten";
     }
   }
 }
 // Funktion, die vom Schritt "wohnung" aus weiter springt.
 const wohnungNext = () => {
   if (wohnungValid.value) {
-    if(grundbetragMitMieteAusreichend.value) {
-      step.value = "kitakosten";
-    } else {
-      step.value = "ergebnis";
-    }
+    step.value = "kitakosten";
   }
 }
 // Funktion, die vom Schritt "kitakosten" aus weiter springt.
@@ -351,10 +359,6 @@ const foerderung = computed(() => {
 // Gibt an, ob der grundbetragMitFamilie bereits hoch genug ist um eine komplette Förderung zu erhalten.
 const grundbetragAusreichend = computed(() => {
   return grundbetragMitFamilie.value < (model.value.familieneinkommen ?? 0);
-})
-
-const grundbetragMitMieteAusreichend = computed(() => {
-  return uebersteigendesEinkommen.value <= 0;
 })
 
 // Gibt an, ob vorraussichtlich mit einer vollen Förderung gerechnet werden kann.
