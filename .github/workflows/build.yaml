@@ -1,6 +1,15 @@
 name: build and test
 
-on: [push]
+on:
+  push:
+  
+  workflow_dispatch:
+      inputs:
+        version:
+          type: string
+          required: true
+          description: semver - Version of imageTag that should be build the image will use. Also the new Version Tag of this image.
+          default: ''  
 
 jobs:
   compliance:
@@ -81,11 +90,13 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ inputs.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
 
       - name: Build and push untested Docker image to GHCR
         uses: docker/build-push-action@v5
         with:
           context: ./wjh
-          push: true
+          push: ${{ github.event.inputs.version != '' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
