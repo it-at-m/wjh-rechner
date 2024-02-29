@@ -1,38 +1,38 @@
 {
     "app": {
-        "name": "Orientierungsrechner zur wirtschaftlichen Jugendhilfe",
-        "haftungsausschluss": "Für die Richtigkeit der Berechnung wird keine Haftung übernommen.",
+        "name": "Orientierungsrechner für WJH (wirtschaftliche Jugendhilfe)",
+        "haftungsausschluss": "Der Rechner dient nur zur Orientierung über eine mögliche finanzielle Unterstützung für den KITA-Beitrag der LHM durch die wirtschaftliche Jugendhilfe. Bitte geben Sie Ihre Daten für eine korrekte Orientierung je Kind ein.",
         "haftungsausschlussSpezialfaelle": "Die angezeigten Informationen erheben nicht den Anspruch der vollständigen Berücksichtigung aller Spezialfälle.",
         "einverstaendnisabfrage": {
             "label": "Einverständnisabfrage",
-            "message": "Die Berechnungen finden ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
+            "message": "Die Berechnung des möglichen Eigenanteils zur WJH finden ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
             "confirm": "Weiter zum Rechner"
         },
         "wjhEingabe": {
             "steps": {
-                "grunddaten": "Grunddaten",
+                "grunddaten": "Einkommen",
                 "wohnung": "Miete",
-                "kitakosten": "Kita-Kosten",
-                "ergebnis": "Kita-Kosten",
+                "kitakosten": "Kinderbetreuungskosten",
+                "ergebnis": "Ergebnis",
                 "weiter": "Weiter"
             },
             "familieneinkommen": {
-                "label": "Netto-Familieneinkommen (mtl.)",
-                "description": "Die wirtschaftliche Jugendhilfe ist abhängig vom Einkommen der gesamten Familie. Dazu zählen auch Kindergeld und Sozialhilfe."
+                "label": "Familieneinkommen (monatlich, netto)",
+                "description": "Einkünfte selbständiger Tätigkeit, nicht-selbständiger Tätigkeit, Sozialleistungen"
             },
             "personenImHaushalt": {
-                "label": "Anzahl der Personen im Haushalt",
+                "label": "Anzahl der im Haushalt lebenden Personen",
                 "description": "Durch die Anzahl der Familienmitglieder wird der Grund-Freibetrag erhöht, sowie die Mietobergrenzen bestimmt."
             },
             "grundbetragMitFamilie": {
                 "label": "Grundbetrag mit Familienzuschlag",
                 "description": "Dieser Anteil des Einkommens wird für die Ermittlung der Förderung als Grundbetrag verwendet und nicht belastet."
             },
-            "einkommensgrenze": "Einkommensgrenze",
-            "uebersteigendesEinkommen": "Übersteigendes Einkommen",
+            "einkommensgrenze": "ermittelte Einkommensgrenze",
+            "uebersteigendesEinkommen": "Höhe des übersteigenden Einkommens",
             "wohnungInfo": "In die Einkommensgrenze werden noch um die Kosten der Miete eingerechnet. Dabei gibt es allerdings Mietobergrenzen, die stattdessen verwendet werden, wenn die Miete darüber liegt.",
             "miete": {
-                "label": "Mietkosten",
+                "label": "Miete",
                 "description": "Die Mietkosten werden ebenfalls auf das anrechenbare Einkommen aufgeschlagen."
             },
             "mietobergrenze": {
@@ -41,22 +41,22 @@
             },
             "uebersteigendesEinkommenReduziert": "Übersteigendes Einkommen",
             "eigenanteil": {
-                "label": "Eigenanteil (30%)",
-                "description": "Dieser Anteil des Einkommens wird für die Kita-Kosten belastet."
+                "label": "Zumutbare Belastung (30%)",
+                "description": "Voraussichtlich zu übernehmender eigener Anteil"
             },
             "kitaKosten": {
-                "label": "Kita-Kosten"
+                "label": "Kinderbetreuungskosten Kind"
             },
             "kitaKostenGeschwister": {
-                "label": "Kita-Kosten Geschwister",
+                "label": "Kinderbetreuungskosten Geschwisterkinder",
                 "description": "Nicht geförderte Kita-Kosten der Geschwister."
             }
         },
         "wjhErgebnis": {
             "volleFoerderung": "Das Einkommen liegt innerhalb der geförderten Einkommensgrenze. Die Kosten werden vorraussichtlich komplett gefördert.",
             "teilfoerderung": "Das Einkommen liegt über der komplett geförderten Einkommensgrenze. Die Kosten werden nur zum Teil gefördert.",
-            "foerderung": "Wirtschaftliche Jugendhilfe",
-            "eigenanteil": "Eigenanteil",
+            "foerderung": "Voraussichtlicher Zuschuss durch die Wirtschaftliche Jugendhilfe",
+            "eigenanteil": "Voraussichtlicher Eigenanteil",
             "belastbaresEinkommen": "Belastbares Einkommen",
             "title": "Orientierungsergebnis",
             "hint": "Die angezeigten Informationen erheben nicht den Anspruch der vollständigen Berücksichtigung aller Spezialfälle, sondern dienen lediglich einer Orientierung, ob die Beantragung der Förderung aussichtsreich ist. Die tatsächliche Höhe der Förderung kann von den hier angezeigten Ergebnissen abweichen."
