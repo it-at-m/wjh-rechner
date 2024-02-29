@@ -9,32 +9,38 @@
           :icon="step.icon"
           :edit-icon="step.editIcon ?? 'mdi-pencil'"
           complete-icon="mdi-check"
+          :error="stepErrors[step.value]"
           :complete="getStepNumber(step.value) < stepNumber"
           :editable="getStepNumber(step.value) <= maxStepNumber"
         />
     </v-stepper-header>
     <v-stepper-window>
       <v-stepper-window-item value="grunddaten" @keyup.enter="grunddatenNext">
+        <v-form v-model="grunddatenValid">
         <v-container>
           <v-row>
             <v-col cols="12">
               <v-text-field
                 class="required"
+                prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.familieneinkommen.label')"
                 :placeholder="$t('app.wjhEingabe.familieneinkommen.label')"
                 :hint="$t('app.wjhEingabe.familieneinkommen.description')"
                 type="number"
-                v-model="model.familieneinkommen"
+                v-model.number="model.familieneinkommen"
+                :rules="geldBetragRules"
               />
             </v-col>
             <v-col cols="12">
               <v-text-field
                 class="required"
+                prepend-inner-icon="mdi-account-group"
                 :label="$t('app.wjhEingabe.personenImHaushalt.label')"
                 :placeholder="$t('app.wjhEingabe.personenImHaushalt.label')"
                 type="number"
                 :hint="$t('app.wjhEingabe.personenImHaushalt.description')"
-                v-model="model.personenImHaushalt"
+                :rules="personenAnzahlRules"
+                v-model.number="model.personenImHaushalt"
               />
             </v-col>
             <v-col cols="12" v-if="grundbetragMitFamilie < model.familieneinkommen">
@@ -49,7 +55,7 @@
             </v-col>
           </v-row>
           <v-row justify="end" class="px-3">
-            <v-btn @click="grunddatenNext">
+            <v-btn @click="grunddatenNext" :disabled="!grunddatenValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -57,18 +63,22 @@
             </v-btn>
           </v-row>
         </v-container>
+        </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="wohnung" @keyup.enter="wohnungNext">
+        <v-form v-model="wohnungValid">
         <v-container>
           <v-row>
             <v-col cols="12">
               <v-text-field
                 class="required"
+                prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.miete.label')"
                 :placeholder="$t('app.wjhEingabe.miete.label')"
                 type="number"
                 :hint="$t('app.wjhEingabe.miete.description')"
-                v-model="model.miete"
+                v-model.number="model.miete"
+                :rules="geldBetragRules"
               />
             </v-col>
             <v-col cols="12" v-if="mietobergrenze < (model.miete ?? 0)">
@@ -87,8 +97,50 @@
             <v-col cols="12">
               <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
             </v-col>
+          </v-row>
+          <v-row justify="end" class="px-3">
+            <v-btn @click="wohnungNext" :disabled="!wohnungValid">
+              {{ $t("app.wjhEingabe.steps.weiter") }}
+              <svg aria-hidden="true" class="m-button__icon">
+                <use xlink:href="#icon-arrow-right"></use>
+              </svg>
+            </v-btn>
+          </v-row>
+        </v-container>
+        </v-form>
+      </v-stepper-window-item>
+      <v-stepper-window-item value="kitakosten">
+        <v-form v-model="kitakostenValid">
+        <v-container>
+          <v-row>
             <v-col cols="12">
-              <v-alert type="info" color="primary" v-if="uebersteigendesEinkommen">
+              <v-text-field
+                class="required"
+                prepend-inner-icon="mdi-currency-eur"
+                :label="$t('app.wjhEingabe.kitaKosten.label')"
+                :placeholder="$t('app.wjhEingabe.kitaKosten.label')"
+                type="number"
+                v-model.number="model.kitaKosten"
+                :rules="geldBetragRules"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                class="required"
+                prepend-inner-icon="mdi-currency-eur"
+                :label="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
+                :placeholder="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
+                type="number"
+                :hint="$t('app.wjhEingabe.kitaKostenGeschwister.description')"
+                v-model.number="model.kitaKostenGeschwister"
+                :rules="geldBetragRules"
+              />
+            </v-col>
+            <v-col cols="12">
+              <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommenMinusGeschwister }}€</span>
+            </v-col>
+            <v-col cols="12">
+              <v-alert type="info" color="primary" v-if="uebersteigendesEinkommenMinusGeschwister">
                 <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
                 <span>{{ eigenanteil }}€</span>
                 <br />
@@ -99,7 +151,7 @@
             </v-col>
           </v-row>
           <v-row justify="end" class="px-3">
-            <v-btn @click="wohnungNext">
+            <v-btn @click="kitakostenNext" :disabled="!kitakostenValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -107,8 +159,10 @@
             </v-btn>
           </v-row>
         </v-container>
+        </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="ergebnis">
+        <v-form v-model="ergebnisValid">
         <v-container>
           <v-row>
             <v-col cols="12" class="py-0">
@@ -125,7 +179,7 @@
                 <span>{{ $t("app.wjhErgebnis.teilfoerderung") }}</span>
                 <br />
                 <b>{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: </b>
-                <span>{{ uebersteigendesEinkommen }}€</span>
+                <span>{{ uebersteigendesEinkommenMinusGeschwister }}€</span>
                 <br />
                 <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
                 <span>{{ eigenanteil }}€</span>
@@ -134,27 +188,6 @@
                   {{ $t("app.wjhEingabe.eigenanteil.description") }}
                 </span>
               </v-alert>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12">
-              <v-text-field
-                class="required"
-                :label="$t('app.wjhEingabe.kitaKosten.label')"
-                :placeholder="$t('app.wjhEingabe.kitaKosten.label')"
-                type="number"
-                v-model="model.kitaKosten"
-              />
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                class="required"
-                :label="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
-                :placeholder="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
-                type="number"
-                :hint="$t('app.wjhEingabe.kitaKostenGeschwister.description')"
-                v-model="model.kitaKostenGeschwister"
-              />
             </v-col>
           </v-row>
           <v-row>
@@ -182,6 +215,7 @@
             </v-col>
           </v-row>
         </v-container>
+        </v-form>
       </v-stepper-window-item>
     </v-stepper-window>
   </v-stepper>
@@ -193,7 +227,7 @@
 <script setup lang="ts">
 import { defineModel, ref, computed, watch } from 'vue'
 import { UserData } from '@/api/wjhTypes'
-import { grundbetrag, getGrundbetragMitFamilie, getMietobergrenze } from '@/constants'
+import { getGrundbetragMitFamilie, getMietobergrenze } from '@/constants'
 import { useI18n } from "vue-i18n";
 const { t } = useI18n({ useScope: "global" });
 
@@ -201,6 +235,7 @@ const { t } = useI18n({ useScope: "global" });
 const steps = [
   { value: "grunddaten", icon: "mdi-cash", editIcon: "mdi-cash-edit" },
   { value: "wohnung", icon: "mdi-home", editIcon: "mdi-home-edit" },
+  { value: "kitakosten", icon: "mdi-cash", editIcon: "mdi-cash-edit" },
   { value: "ergebnis", icon: "mdi-information" }
 ]
 const step = ref("grunddaten")
@@ -217,15 +252,25 @@ watch(stepNumber, (newValue : number) => {
 
 // Funktion, die vom Schritt "grunddaten" aus weiter springt.
 const grunddatenNext = () => {
-  if(grundbetragAusreichend.value) {
-    step.value = "wohnung";
-  } else {
-    step.value = "ergebnis";
+  if(grunddatenValid.value) {
+    if(grundbetragAusreichend.value) {
+      step.value = "wohnung";
+    } else {
+      step.value = "ergebnis";
+    }
   }
 }
 // Funktion, die vom Schritt "wohnung" aus weiter springt.
 const wohnungNext = () => {
-  step.value = "ergebnis";
+  if (wohnungValid.value) {
+    step.value = "kitakosten";
+  }
+}
+// Funktion, die vom Schritt "kitakosten" aus weiter springt.
+const kitakostenNext = () => {
+  if (kitakostenValid.value) {
+    step.value = "ergebnis";
+  }
 }
 
 // In der Eingabemaske verwendete Daten.
@@ -239,7 +284,7 @@ const grundbetragMitFamilie = computed(() => {
 // Obergrenze der Miete, die in die Einkommensgrenze einfließen kann.
 const mietobergrenze = computed(() => {
   const mietobergrenze = getMietobergrenze(model.value.personenImHaushalt ?? 1);
-  return mietobergrenze.miete;
+  return mietobergrenze?.miete ?? 0;
 })
 
 // Für die Miete tatsächlich verwenteter Wert
@@ -257,9 +302,14 @@ const uebersteigendesEinkommen = computed(() => {
   return Math.max(0, (model.value.familieneinkommen ?? 0) - einkommensgrenze.value);
 })
 
+// Anteil des Einkommens, der die Einkommensgrenze überschreitet und nicht schon für andere Kita-Kosten verwendet wird.
+const uebersteigendesEinkommenMinusGeschwister = computed(() => {
+  return Math.max(0, (model.value.familieneinkommen ?? 0) - einkommensgrenze.value - (model.value.kitaKostenGeschwister ?? 0));
+})
+
 // Anteil des Einkommens, der für die Kita-Kosten belastet wird.
 const eigenanteil = computed(() => {
-  return Math.round(uebersteigendesEinkommen.value * 0.3);
+  return Math.round(uebersteigendesEinkommenMinusGeschwister.value * 0.3);
 })
 
 // Anteil des Einkommens, der für die Kita-Kosten belastet wird.
@@ -286,4 +336,31 @@ const grundbetragAusreichend = computed(() => {
 const volleFoerderung = computed(() => {
   return uebersteigendesEinkommen.value <= 0;
 })
+
+// Validierung
+const grunddatenValid = ref(true);
+const wohnungValid = ref(true);
+const ergebnisValid = ref(true);
+const kitakostenValid = ref(true);
+
+const stepErrors = computed(() => {
+  return {
+    "grunddaten": !grunddatenValid.value,
+    "wohnung": !wohnungValid.value,
+    "kitakosten": !kitakostenValid.value,
+    "ergebnis": false
+  }
+});
+
+const geldBetragRules = [
+  (v : number) => !!v || v === 0 || "Bitte eine gültige Zahl eingeben.",
+  (v : number) => v >= 0 || "Der Betrag muss positiv sein.",
+  (v : number) => v <= 1000000 || "Der Rechner funktioniert nur für Beträge bis 1.000.000 €."
+]
+
+const personenAnzahlRules = [
+  (v : number) => !!v || v === 0 || "Bitte eine gültige Zahl eingeben.",
+  (v : number) => v >= 1 || "Die Anzahl muss mindestens 1 sein.",
+  (v : number) => v <= 100 || "Wert zu groß."
+]
 </script>

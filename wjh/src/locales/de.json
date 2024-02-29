@@ -12,6 +12,7 @@
             "steps": {
                 "grunddaten": "Grunddaten",
                 "wohnung": "Miete",
+                "kitakosten": "Kita-Kosten",
                 "ergebnis": "Kita-Kosten",
                 "weiter": "Weiter"
             },

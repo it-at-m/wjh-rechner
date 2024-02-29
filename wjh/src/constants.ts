@@ -1,7 +1,7 @@
 export const grundbetrag = 1182
 export const familienzuschlag = 414
 export const getGrundbetragMitFamilie = (personen : number) : number => {
-    return grundbetrag + (personen ?? 0) * familienzuschlag;
+    return grundbetrag + (personen ? personen-1 : 0) * familienzuschlag;
 }
 
 export const mietobergrenzen = [
