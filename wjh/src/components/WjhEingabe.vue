@@ -1,5 +1,5 @@
 <template>
-  <v-stepper v-model="step">
+  <v-stepper v-model="step" @keyup.enter="nextStep">
     <v-stepper-header>
         <v-stepper-item
           v-for="step in steps"
@@ -15,7 +15,7 @@
         />
     </v-stepper-header>
     <v-stepper-window>
-      <v-stepper-window-item value="grunddaten" @keyup.enter="grunddatenNext">
+      <v-stepper-window-item value="grunddaten">
         <v-form v-model="grunddatenValid">
         <v-container>
           <v-row>
@@ -65,7 +65,7 @@
         </v-container>
         </v-form>
       </v-stepper-window-item>
-      <v-stepper-window-item value="wohnung" @keyup.enter="wohnungNext">
+      <v-stepper-window-item value="wohnung">
         <v-form v-model="wohnungValid">
         <v-container>
           <v-row>
@@ -250,6 +250,23 @@ watch(stepNumber, (newValue : number) => {
   maxStepNumber = Math.max(newValue, maxStepNumber);
 })
 
+const nextStep = () => {
+  switch(step.value) {
+    case "grunddaten": {
+      grunddatenNext()
+      break
+    }
+    case "wohnung": {
+      wohnungNext()
+      break
+    }
+    case "kitakosten": {
+      kitakostenNext()
+      break
+    }
+  }
+}
+
 // Funktion, die vom Schritt "grunddaten" aus weiter springt.
 const grunddatenNext = () => {
   if(grunddatenValid.value) {
@@ -263,7 +280,11 @@ const grunddatenNext = () => {
 // Funktion, die vom Schritt "wohnung" aus weiter springt.
 const wohnungNext = () => {
   if (wohnungValid.value) {
-    step.value = "kitakosten";
+    if(grundbetragMitMieteAusreichend.value) {
+      step.value = "kitakosten";
+    } else {
+      step.value = "ergebnis";
+    }
   }
 }
 // Funktion, die vom Schritt "kitakosten" aus weiter springt.
@@ -314,7 +335,7 @@ const eigenanteil = computed(() => {
 
 // Anteil des Einkommens, der für die Kita-Kosten belastet wird.
 const belastbaresEinkommen = computed(() => {
-  return Math.max(0, eigenanteil.value - (model.value.kitaKostenGeschwister ?? 0));
+  return Math.max(0, eigenanteil.value);
 })
 
 // Anteil der Kitakosten, die vorraussichtlich selbst gezahlt werden müssen.
@@ -332,9 +353,13 @@ const grundbetragAusreichend = computed(() => {
   return grundbetragMitFamilie.value < (model.value.familieneinkommen ?? 0);
 })
 
+const grundbetragMitMieteAusreichend = computed(() => {
+  return uebersteigendesEinkommen.value <= 0;
+})
+
 // Gibt an, ob vorraussichtlich mit einer vollen Förderung gerechnet werden kann.
 const volleFoerderung = computed(() => {
-  return uebersteigendesEinkommen.value <= 0;
+  return uebersteigendesEinkommenMinusGeschwister.value <= 0;
 })
 
 // Validierung
@@ -343,7 +368,7 @@ const wohnungValid = ref(true);
 const ergebnisValid = ref(true);
 const kitakostenValid = ref(true);
 
-const stepErrors = computed(() => {
+const stepErrors = computed<{[key: string]: boolean}>(() => {
   return {
     "grunddaten": !grunddatenValid.value,
     "wohnung": !wohnungValid.value,

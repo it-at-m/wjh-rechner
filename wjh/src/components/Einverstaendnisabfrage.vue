@@ -3,6 +3,7 @@
     <v-card
       variant="flat"
       :title="$t('app.einverstaendnisabfrage.label')"
+      @keyup.enter="confirm"
     >
       <v-card-text>
         <v-alert type="info" color="primary">
@@ -13,7 +14,7 @@
         <span>{{ $t("app.einverstaendnisabfrage.message") }}</span>
       </v-card-text>
       <v-card-actions id="einverstaendnisabfrage-message" class="justify-end">
-        <v-btn @click="confirm" variant="flat">
+        <v-btn @click="confirm" variant="flat" class="mx-4 mb-2">
           {{ $t("app.einverstaendnisabfrage.confirm") }}
           <svg aria-hidden="true" class="m-button__icon">
             <use xlink:href="#icon-arrow-right"></use>
@@ -28,11 +29,22 @@
 </style>
 
 <script setup lang="ts">
-import { defineModel } from 'vue'
+import { defineModel, onMounted } from 'vue'
 
 const model = defineModel<boolean>()
 
 const confirm = () => {
   model.value = false;
+  window.removeEventListener('keyup', enterListener);
 }
+
+const enterListener = (event : KeyboardEvent) => {
+  if (event.key === "Enter") { 
+    confirm();
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keyup', enterListener);
+})
 </script>
