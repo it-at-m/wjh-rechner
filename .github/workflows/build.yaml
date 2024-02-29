@@ -92,7 +92,6 @@ jobs:
           images: ghcr.io/${{ github.repository }}
           tags: |
             type=semver,pattern={{version}},value=${{ inputs.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
-            type=raw,pattern=latest,enable=${{ github.event_name == 'workflow_dispatch' }}
 
       - name: Build and push untested Docker image to GHCR
         uses: docker/build-push-action@v5
