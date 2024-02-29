@@ -89,10 +89,11 @@
                 <span>
                   {{ $t("app.wjhEingabe.mietobergrenze.description") }}
                 </span>
+                <br/>
+                <b>{{ $t("app.wjhEingabe.einkommensgrenze") }}: </b>
+                <span>{{ einkommensgrenze }}€</span>
+                <br/>
               </v-alert>
-            </v-col>
-            <v-col cols="12">
-              <span class="m-label">{{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€</span>
             </v-col>
             <v-col cols="12">
               <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
@@ -123,17 +124,6 @@
               <v-text-field
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
-                :label="$t('app.wjhEingabe.kitaKosten.label')"
-                :placeholder="$t('app.wjhEingabe.kitaKosten.label')"
-                type="number"
-                v-model.number="model.kitaKosten"
-                :rules="geldBetragRules"
-              />
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                class="required"
-                prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
                 :placeholder="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
                 type="number"
@@ -143,16 +133,17 @@
               />
             </v-col>
             <v-col cols="12">
-              <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommenMinusGeschwister }}€</span>
-            </v-col>
-            <v-col cols="12">
-              <v-alert type="info" color="primary" v-if="uebersteigendesEinkommenMinusGeschwister">
-                <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
-                <span>{{ eigenanteil }}€</span>
-                <br />
-                <span>
-                  {{ $t("app.wjhEingabe.eigenanteil.description") }}
-                </span>
+              <v-alert type="info" color="primary">
+                <b>{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: </b>
+                <span>{{ uebersteigendesEinkommenMinusGeschwister }}€</span>
+                <div v-if="uebersteigendesEinkommenMinusGeschwister > 0">
+                  <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
+                  <span>{{ eigenanteil }}€</span>
+                  <br />
+                  <span>
+                    {{ $t("app.wjhEingabe.eigenanteil.description") }}
+                  </span>
+                </div>
               </v-alert>
             </v-col>
           </v-row>
@@ -204,7 +195,15 @@
           </v-row>
           <v-row>
             <v-col cols="12">
-              <span class="m-label">{{ $t("app.wjhErgebnis.belastbaresEinkommen") }}: {{ belastbaresEinkommen }}€</span>
+              <v-text-field
+                class="required"
+                prepend-inner-icon="mdi-currency-eur"
+                :label="$t('app.wjhEingabe.kitaKosten.label')"
+                :placeholder="$t('app.wjhEingabe.kitaKosten.label')"
+                type="number"
+                v-model.number="model.kitaKosten"
+                :rules="geldBetragRules"
+              />
             </v-col>
             <v-col cols="12">
               <v-progress-linear
@@ -285,14 +284,18 @@ const grunddatenNext = () => {
     if(grundbetragAusreichend.value) {
       step.value = "wohnung";
     } else {
-      step.value = "kitakosten";
+      step.value = "ergebnis";
     }
   }
 }
 // Funktion, die vom Schritt "wohnung" aus weiter springt.
 const wohnungNext = () => {
   if (wohnungValid.value) {
-    step.value = "kitakosten";
+    if (uebersteigendesEinkommen.value) {
+      step.value = "kitakosten";
+    } else {
+      step.value = "ergebnis"
+    }
   }
 }
 // Funktion, die vom Schritt "kitakosten" aus weiter springt.

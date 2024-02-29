@@ -50,13 +50,13 @@
             },
             "kitaKostenGeschwister": {
                 "label": "Kinderbetreuungskosten Geschwisterkinder",
-                "description": "Nicht geförderte Kita-Kosten der Geschwister."
+                "description": "Nicht geförderte Kita-Kosten der Geschwister werden ebenfalls mit berücksichtigt."
             }
         },
         "wjhErgebnis": {
             "volleFoerderung": "Das Einkommen liegt innerhalb der geförderten Einkommensgrenze. Die Kosten werden vorraussichtlich komplett gefördert.",
             "teilfoerderung": "Das Einkommen liegt über der komplett geförderten Einkommensgrenze. Die Kosten werden nur zum Teil gefördert.",
-            "foerderung": "Voraussichtlicher Zuschuss durch die Wirtschaftliche Jugendhilfe",
+            "foerderung": "Voraussichtlicher Zuschuss",
             "eigenanteil": "Voraussichtlicher Eigenanteil",
             "belastbaresEinkommen": "Belastbares Einkommen",
             "title": "Orientierungsergebnis",
