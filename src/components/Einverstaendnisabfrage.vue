@@ -7,6 +7,8 @@
     >
       <v-card-text>
         <v-alert type="info" color="primary">
+          <span>{{ $t("app.description") }}</span>
+          <br />
           <span>{{ $t("app.haftungsausschluss") }}</span>
           <br />
           <span>{{ $t("app.haftungsausschlussSpezialfaelle") }}</span>

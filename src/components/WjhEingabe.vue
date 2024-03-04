@@ -43,16 +43,6 @@
                 v-model.number="model.personenImHaushalt"
               />
             </v-col>
-            <v-col cols="12" v-if="grundbetragMitFamilie < model.familieneinkommen">
-              <v-alert type="info" color="primary">
-                <b>{{ $t("app.wjhEingabe.grundbetragMitFamilie.label") }}: </b>
-                <span>{{ grundbetragMitFamilie }}€</span>
-                <br />
-                <span>
-                  {{ $t("app.wjhEingabe.grundbetragMitFamilie.description") }}
-                </span>
-              </v-alert>
-            </v-col>
           </v-row>
           <v-row justify="end" class="px-3">
             <v-btn @click="grunddatenNext" :disabled="!grunddatenValid">
@@ -78,6 +68,18 @@
                 type="number"
                 :hint="$t('app.wjhEingabe.miete.description')"
                 v-model.number="model.miete"
+                :rules="geldBetragRules"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                class="required"
+                prepend-inner-icon="mdi-vector-square"
+                :label="$t('app.wjhEingabe.groesseWohnung')"
+                :placeholder="$t('app.wjhEingabe.groesseWohnung')"
+                type="number"
+                :hint="nebenkostenText"
+                v-model.number="model.groesseWohnung"
                 :rules="geldBetragRules"
               />
             </v-col>
@@ -319,9 +321,19 @@ const mietobergrenze = computed(() => {
   return mietobergrenze?.miete ?? 0;
 })
 
+// Nebenkosten, anhand der angegebenen Fläche
+const nebenkostenWohnung = computed(() => {
+  return Math.round((model.value.groesseWohnung ?? 0) * 1.2);
+})
+
+// Nebenkosten, anhand der angegebenen Fläche
+const nebenkostenText = computed(() => {
+  return t("app.wjhEingabe.nebenkostenWohnung", [nebenkostenWohnung.value]);
+})
+
 // Für die Miete tatsächlich verwenteter Wert
 const verwendeteMiete = computed(() => {
-  return Math.min(mietobergrenze.value, model.value.miete ?? 0);
+  return Math.min(mietobergrenze.value, model.value.miete ?? 0) + nebenkostenWohnung.value;
 })
 
 // Grenze des Einkommens, das nicht für Kita-Kosten belastet wird.
