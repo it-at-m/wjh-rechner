@@ -1,17 +1,3 @@
-## Customize this file after creating the new REPO and remove this lines.
-What to adjust:  
-* Add the your project or repo name direct under the logo.
-* Add a short and long desciption.
-* Add links for your final repo to report a bug or request a feature.
-* Add list of used technologies.
-* If you have, add a roadmap or remove this section.
-* Fill up the section for set up and documentation.
- * Start in this file only with documentation and link to the docs folder.
-* Add project shields. Use [shields.io](https://shields.io/)
-
-## ------- end to remove -------
-<!-- add Project Logo, if existing -->
-
 # WJH-Orientierungsrechner
 
 Online-Rechner zur Vorab-Berechnung der Förderung zur wirtschaftlichen Jugendhilfe.
@@ -25,7 +11,7 @@ Online-Rechner zur Vorab-Berechnung der Förderung zur wirtschaftlichen Jugendhi
 
 *In Arbeit*
 
-Siehe [offene Issues](https://github.com/it-at-m/wjh-rechner/issues) für eine Liste der vorgeschlagenen Features (und bekannten Problemen).
+Siehe [offene Issues](https://github.com/it-at-m/wjh-rechner/issues) für eine Liste der vorgeschlagenen Features (und bekannten Probleme).
 
 
 ## Set up
@@ -35,7 +21,7 @@ Wenn Npm installiert ist, kann das Projekt lokal gestartet werden:
     npm install
     npm run dev
 
-Weitere Infos sind in der [getting-started.md](https://github.com/it-at-m/wjh-rechner/blob/dev/docs/getting-started.md).
+Weitere Infos sind in der Datei [getting-started.md](https://github.com/it-at-m/wjh-rechner/blob/dev/docs/getting-started.md) zu finden.
 
 ## Documentation
 
