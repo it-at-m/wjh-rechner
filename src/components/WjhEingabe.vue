@@ -1,5 +1,5 @@
 <template>
-  <v-stepper v-model="step" @keyup.enter="nextStep">
+  <v-stepper v-model="step" @keyup.enter="nextStep" :mobile="isMobile">
     <v-stepper-header>
         <v-stepper-item
           v-for="step in steps"
@@ -16,8 +16,8 @@
     </v-stepper-header>
     <v-stepper-window>
       <v-stepper-window-item value="grunddaten">
-        <v-form v-model="grunddatenValid">
-        <v-container>
+        <v-form v-model="grunddatenValid" @submit="$event.preventDefault()">
+        <v-container class="py-2 px-0">
           <v-row>
             <v-col cols="12">
               <v-text-field
@@ -75,8 +75,8 @@
         </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="wohnung">
-        <v-form v-model="wohnungValid">
-        <v-container>
+        <v-form v-model="wohnungValid" @submit="$event.preventDefault()">
+        <v-container class="py-2 px-0">
           <v-row>
             <v-col cols="12">
               <v-text-field
@@ -138,8 +138,8 @@
         </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="kitakosten">
-        <v-form v-model="kitakostenValid">
-        <v-container>
+        <v-form v-model="kitakostenValid" @submit="$event.preventDefault()">
+        <v-container class="py-2 px-0">
           <v-row>
             <v-col cols="12">
               <v-text-field
@@ -186,8 +186,8 @@
         </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="ergebnis">
-        <v-form v-model="ergebnisValid">
-        <v-container>
+        <v-form v-model="ergebnisValid" @submit="$event.preventDefault()">
+        <v-container class="py-2 px-0">
           <v-row>
             <v-col cols="12" class="py-0">
               <h3 class="m-label">{{ $t("app.wjhErgebnis.title") }}</h3>
@@ -347,6 +347,12 @@ const resultBack = () => {
 
 // In der Eingabemaske verwendete Daten.
 const model = defineModel<UserData>({ default: {}})
+const props = defineProps({
+  isMobile: {
+    type: Boolean,
+    default: false
+  }
+});
 
 const showFamilieneinkommenTooltip = ref(false);
 

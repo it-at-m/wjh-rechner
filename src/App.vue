@@ -2,7 +2,7 @@
   <v-app>
     <h2 class="px-4 pt-1">{{ $t("app.name") }}</h2>
     <einverstaendnisabfrage v-model="confirmConsent" />
-    <wjh-eingabe v-model="userDataValue" />
+    <wjh-eingabe v-model="userDataValue" :is-mobile="isMobile" />
     <a class="github-link" href="https://github.com/it-at-m/wjh-rechner" target="_blank">
       <v-icon>mdi-code-tags</v-icon>
     </a>
@@ -17,6 +17,8 @@ import { UserData } from './api/wjhTypes';
 
 const confirmConsent = ref(true)
 const userDataValue = ref(new UserData())
+
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 </script>
 
 <style>

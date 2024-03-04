@@ -13,7 +13,7 @@
             "steps": {
                 "grunddaten": "Einkommen",
                 "wohnung": "Miete",
-                "kitakosten": "Kinderbetreuungskosten",
+                "kitakosten": "Kinderbetreuungs-kosten",
                 "ergebnis": "Ergebnis",
                 "weiter": "Weiter",
                 "zurueck": "Zurück"

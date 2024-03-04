@@ -1,12 +1,18 @@
 <template>
-  <v-dialog v-model="model" width="70%" class="einverstaendnisabfrage" persistent>
+  <v-dialog
+    id="einverstaendnis-dialog"
+    v-model="model"
+    max-width="1200px"
+    class="einverstaendnisabfrage"
+    persistent
+  >
     <v-card
       variant="flat"
       :title="$t('app.einverstaendnisabfrage.label')"
       @keyup.enter="confirm"
     >
       <v-card-text>
-        <v-alert type="info" color="primary">
+        <v-alert color="primary">
           <span>{{ $t("app.description") }}</span>
           <br />
           <span>{{ $t("app.haftungsausschluss") }}</span>
