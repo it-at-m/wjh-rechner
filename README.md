@@ -12,30 +12,34 @@ What to adjust:
 ## ------- end to remove -------
 <!-- add Project Logo, if existing -->
 
-# repo or project name
+# WJH-Orientierungsrechner
 
-*Add a description from your project here.*
-
+Online-Rechner zur Vorab-Berechnung der Förderung zur wirtschaftlichen Jugendhilfe.
 
 ### Built With
 
-The documentation project is built with technologies we use in our projects:
-
-* *write here the list of used technologies*
+* Npm
+* Vue 3
 
 ## Roadmap
 
-*if you have a ROADMAP for your project add this here*
+*In Arbeit*
 
-
-See the [open issues](#) for a full list of proposed features (and known issues).
+Siehe [offene Issues](https://github.com/it-at-m/wjh-rechner/issues) für eine Liste der vorgeschlagenen Features (und bekannten Problemen).
 
 
 ## Set up
-*how can i start and fly this project*
+
+Wenn Npm installiert ist, kann das Projekt lokal gestartet werden:
+
+    npm install
+    npm run dev
+
+Weitere Infos sind in der [getting-started.md](https://github.com/it-at-m/wjh-rechner/blob/dev/docs/getting-started.md).
 
 ## Documentation
-*what insights do you have to tell*
+
+*In Arbeit*
 
 ## Contributing
 
@@ -52,7 +56,6 @@ Don't forget to give the project a star! Thanks again!
 6. Open a Pull Request
 
 More about this in the [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md) file.
-
 
 ## License
 

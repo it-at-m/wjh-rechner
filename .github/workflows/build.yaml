@@ -12,8 +12,8 @@ on:
           default: ''  
 
 env:
-  NPM_PROJECT_ROOT: ./wjh
-  NPM_BUILD_TARGET: ./wjh/dist
+  NPM_PROJECT_ROOT: ./
+  NPM_BUILD_TARGET: ./dist
 
 jobs:
   compliance:
