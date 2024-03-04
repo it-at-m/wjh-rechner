@@ -20,7 +20,7 @@
             },
             "familieneinkommen": {
                 "label": "Familieneinkommen (monatlich, netto)",
-                "description": "Einkünfte nicht-selbständige Tätigkeit, selbständiger Tätigkeit",
+                "description": "Einkünfte nicht-selbständige Tätigkeit, selbständige Tätigkeit",
                 "additionalHint": "Zum Familieneinkommen zählen alle Einkünfte der Eltern, Kindergeld, Einkommen des Kindes (z.B. Unterhalt, UVG, Halbwaisenrente) sonstiges Einkommen (Zinseinkünfte, Einkommen aus Vermietung, u.ä.)"
             },
             "personenImHaushalt": {

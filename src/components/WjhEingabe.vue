@@ -29,7 +29,26 @@
                 type="number"
                 v-model.number="model.familieneinkommen"
                 :rules="geldBetragRules"
-              />
+              >
+                <template v-slot:append-inner>
+                  <v-tooltip
+                    v-model="showFamilieneinkommenTooltip"
+                    @click:outside="showFamilieneinkommenTooltip = false"
+                    :text="$t('app.wjhEingabe.familieneinkommen.additionalHint')"
+                    width="400px"
+                    open-on-click
+                    close-on-back
+                    :open-on-hover="false"
+                  >
+                    <template v-slot:activator="{ props }">
+                      <v-icon
+                        v-bind="props"
+                        @click="showFamilieneinkommenTooltip = true"
+                      >mdi-information</v-icon>
+                    </template>
+                  </v-tooltip>
+                </template>
+              </v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
@@ -309,6 +328,8 @@ const kitakostenNext = () => {
 
 // In der Eingabemaske verwendete Daten.
 const model = defineModel<UserData>({ default: {}})
+
+const showFamilieneinkommenTooltip = ref(false);
 
 // Grundbetrag der Einkommensgrenze inklusive des Familianzuschlags.
 const grundbetragMitFamilie = computed(() => {
