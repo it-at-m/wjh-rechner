@@ -75,5 +75,12 @@
             "lastModifiedBy": "Zuletzt geändert von",
             "lastModifiedDate": "Zuletzt geändert am"
         }
+    },
+    "validation": {
+        "zahl": "Bitte eine gültige Zahl eingeben.",
+        "positiveZahl": "Der Betrag muss positiv sein.",
+        "maximalbetrag": "Der Rechner funktioniert nur für Beträge bis 1.000.000 €.",
+        "mindestensEins": "Die Anzahl muss mindestens 1 sein.",
+        "zuGross": "Der Wert ist zu groß."
     }
 }

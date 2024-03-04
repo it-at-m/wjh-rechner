@@ -385,14 +385,14 @@ const stepErrors = computed<{[key: string]: boolean}>(() => {
 });
 
 const geldBetragRules = [
-  (v : number) => !!v || v === 0 || "Bitte eine gültige Zahl eingeben.",
-  (v : number) => v >= 0 || "Der Betrag muss positiv sein.",
-  (v : number) => v <= 1000000 || "Der Rechner funktioniert nur für Beträge bis 1.000.000 €."
+  (v : number) => !!v || v === 0 || t("validation.zahl"),
+  (v : number) => v >= 0 || t("validation.positiveZahl"),
+  (v : number) => v <= 1000000 || t("validation.maximalbetrag")
 ]
 
 const personenAnzahlRules = [
-  (v : number) => !!v || v === 0 || "Bitte eine gültige Zahl eingeben.",
-  (v : number) => v >= 1 || "Die Anzahl muss mindestens 1 sein.",
-  (v : number) => v <= 100 || "Wert zu groß."
+  (v : number) => !!v || v === 0 || t("validation.zahl"),
+  (v : number) => v >= 1 || t("validation.mindestensEins"),
+  (v : number) => v <= 100 || t("validation.zuGross")
 ]
 </script>
