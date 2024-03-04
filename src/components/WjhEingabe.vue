@@ -246,6 +246,14 @@
               <span class="m-label">{{ $t("app.wjhErgebnis.eigenanteil") }}: {{ nichtGefoerderterBetrag }}€</span>
             </v-col>
           </v-row>
+          <v-row justify="space-between" class="px-3">
+            <v-btn @click="resultBack">
+              <svg aria-hidden="true" class="m-button__icon ml-0 mr-2">
+                <use xlink:href="#icon-arrow-left"></use>
+              </svg>
+              {{ $t("app.wjhEingabe.steps.zurueck") }}
+            </v-btn>
+          </v-row>
         </v-container>
         </v-form>
       </v-stepper-window-item>
@@ -302,7 +310,7 @@ const nextStep = () => {
 // Funktion, die vom Schritt "grunddaten" aus weiter springt.
 const grunddatenNext = () => {
   if(grunddatenValid.value) {
-    if(grundbetragAusreichend.value) {
+    if(!grundbetragAusreichend.value) {
       step.value = "wohnung";
     } else {
       step.value = "ergebnis";
@@ -323,6 +331,17 @@ const wohnungNext = () => {
 const kitakostenNext = () => {
   if (kitakostenValid.value) {
     step.value = "ergebnis";
+  }
+}
+// Funktion, die vom Schritt "ergebnis" aus zurück springt.
+const resultBack = () => {
+  if (grundbetragAusreichend.value) {
+    step.value = "grunddaten"
+  } else if (!uebersteigendesEinkommen.value) {
+    // kein übersteigendes einkommen nach Schritt Wohnung
+    step.value = "wohnung"
+  } else {
+    step.value = "kitakosten"
   }
 }
 
@@ -394,7 +413,7 @@ const foerderung = computed(() => {
 // Status-Felder
 // Gibt an, ob der grundbetragMitFamilie bereits hoch genug ist um eine komplette Förderung zu erhalten.
 const grundbetragAusreichend = computed(() => {
-  return grundbetragMitFamilie.value < (model.value.familieneinkommen ?? 0);
+  return grundbetragMitFamilie.value >= (model.value.familieneinkommen ?? 0);
 })
 
 // Gibt an, ob vorraussichtlich mit einer vollen Förderung gerechnet werden kann.
