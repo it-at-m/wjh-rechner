@@ -4,7 +4,7 @@
     <einverstaendnisabfrage v-model="confirmConsent" />
     <wjh-eingabe v-model="userDataValue" :is-mobile="isMobile" />
     <a class="github-link" href="https://github.com/it-at-m/wjh-rechner" target="_blank">
-      <v-icon>mdi-code-tags</v-icon>
+      <v-icon>mdi-github-circle</v-icon>
     </a>
   </v-app>
 </template>
