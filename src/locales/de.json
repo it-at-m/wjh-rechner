@@ -12,22 +12,22 @@
             "steps": {
                 "grunddaten": "Einkommen",
                 "wohnung": "Miete",
-                "kitakosten": "Kinderbetreuungs-kosten",
+                "kitakosten": "Kitakosten",
                 "ergebnis": "Ergebnis",
                 "weiter": "Weiter",
                 "zurueck": "Zurück"
             },
             "familieneinkommen": {
-                "label": "Familieneinkommen (monatlich, netto)",
-                "description": "Einkünfte nicht-selbständige Tätigkeit, selbständige Tätigkeit",
+                "label": "Familieneinkommen (mtl.)",
+                "description": "Monatliche Netto-Einkünfte nicht-selbständige Tätigkeit, selbständige Tätigkeit",
                 "additionalHint": "Zum Familieneinkommen zählen alle Einkünfte der Eltern, Kindergeld, Einkommen des Kindes (z.B. Unterhalt, UVG, Halbwaisenrente) sonstiges Einkommen (Zinseinkünfte, Einkommen aus Vermietung, u.ä.)"
             },
             "personenImHaushalt": {
-                "label": "Anzahl der im Haushalt lebenden Personen",
-                "description": "Durch die Anzahl der Familienmitglieder wird die Einkommensgrenze ermittelt, sowie die anrechenbaren Kosten der Unterkunft (Miete) bestimmt."
+                "label": "Personen im Haushalt",
+                "description": "Durch die Anzahl der im Haushalt lebenden Personen wird die Einkommensgrenze ermittelt, sowie die anrechenbaren Kosten der Unterkunft (Miete) bestimmt."
             },
             "grundbetragMitFamilie": {
-                "label": "Grundbetrag mit Familienzuschlag",
+                "label": "Grundbetrag und Familienzuschläge",
                 "description": "Dieser Anteil des Einkommens wird für die Ermittlung der Förderung als Grundbetrag verwendet und nicht belastet."
             },
             "einkommensgrenze": "ermittelte Einkommensgrenze",
@@ -35,9 +35,13 @@
             "wohnungInfo": "In die Einkommensgrenze werden noch um die Kosten der Miete eingerechnet. Dabei gibt es allerdings Mietobergrenzen, die stattdessen verwendet werden, wenn die Miete darüber liegt.",
             "miete": {
                 "label": "Kosten der Unterkunft (Miete)",
+                "shortLabel": "Mietkosten",
                 "description": "Kaltmiete"
             },
-            "nebenkostenWohnung": "Kosten für Warmwasser und Heizung (1,20€ pro qm): {0}€",
+            "nebenkostenWohnung": {
+                "label": "Kosten für Warmwasser und Heizung (1,20€ pro qm): {0}€",
+                "shortLabel": "Warmwasser und Heizung"
+            },
             "kostenWohnungGesamt": "berücksichtigungsfähige Kosten der Unterkunft",
             "groesseWohnung": "Fläche der Wohnung (qm)",
             "mietobergrenze": {
@@ -50,10 +54,10 @@
                 "description": "Ihr voraussichtlicher Eigenanteil am Kita-Beitrag."
             },
             "kitaKosten": {
-                "label": "Kinderbetreuungskosten Kind"
+                "label": "Kitakosten Kind"
             },
             "kitaKostenGeschwister": {
-                "label": "Kinderbetreuungskosten Geschwisterkinder",
+                "label": "Kitakosten Geschwisterkinder",
                 "description": "Kita-Kosten der Geschwister werden ebenfalls berücksichtigt."
             }
         },
@@ -63,7 +67,7 @@
             "foerderung": "Voraussichtlicher Zuschuss",
             "eigenanteil": "Voraussichtlicher Eigenanteil",
             "belastbaresEinkommen": "Belastbares Einkommen",
-            "title": "Orientierungsergebnis",
+            "title": "Voraussichtlicher Zuschuss",
             "hint": "Das Ergebnis dient ausschließlich der Orientierung, ob die Beantragung der Förderung aussichtsreich ist. Die tatsächliche Höhe der Förderung kann von den hier angezeigten Ergebnissen abweichen."
         }
     },

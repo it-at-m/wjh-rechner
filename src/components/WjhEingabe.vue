@@ -114,7 +114,7 @@
               </v-alert>
             </v-col>
             <v-col cols="12">
-              <span class="m-label">{{ $t("app.wjhEingabe.kostenWohnungGesamt") }}: {{ verwendeteMiete }}€</span>
+              <span class="m-label">{{ $t("app.wjhEingabe.kostenWohnungGesamt") }}: {{ wohnkostenGesamtText }}</span>
               <span class="m-label">{{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€</span>
               <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
             </v-col>
@@ -373,12 +373,22 @@ const nebenkostenWohnung = computed(() => {
 
 // Nebenkosten, anhand der angegebenen Fläche
 const nebenkostenText = computed(() => {
-  return t("app.wjhEingabe.nebenkostenWohnung", [nebenkostenWohnung.value]);
+  return t("app.wjhEingabe.nebenkostenWohnung.label", [nebenkostenWohnung.value]);
 })
 
-// Für die Miete tatsächlich verwenteter Wert
+// Nebenkosten, anhand der angegebenen Fläche
+const wohnkostenGesamtText = computed(() => {
+  return `${verwendeteMiete.value}€ (${t("app.wjhEingabe.miete.shortLabel")}: ${mieteMitObergrenze.value}€ + ${t("app.wjhEingabe.nebenkostenWohnung.shortLabel")}: ${nebenkostenWohnung.value}€)`;
+})
+
+// Für die Miete tatsächlich verwendeter Wert unter Berücksichtigung der Mietobergrenze
+const mieteMitObergrenze = computed(() => {
+  return Math.min(mietobergrenze.value, model.value.miete ?? 0);
+})
+
+// Für die Wohnkosten tatsächlich verwendeter Wert
 const verwendeteMiete = computed(() => {
-  return Math.min(mietobergrenze.value, model.value.miete ?? 0) + nebenkostenWohnung.value;
+  return mieteMitObergrenze.value + nebenkostenWohnung.value;
 })
 
 // Grenze des Einkommens, das nicht für Kita-Kosten belastet wird.
