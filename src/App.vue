@@ -2,7 +2,7 @@
   <v-app>
     <h2 class="px-4 pt-1">{{ $t("app.name") }}</h2>
     <einverstaendnisabfrage v-model="confirmConsent" />
-    <wjh-eingabe v-model="userDataValue" :is-mobile="isMobile" />
+    <wjh-eingabe v-model="userDataValue" :is-mobile="isMobile" :is-active="!confirmConsent" />
     <a class="impressum" href="https://stadt.muenchen.de/infos/impressum-datenschutz.html" target="_blank">
       {{ $t("app.impressum") }}
     </a>

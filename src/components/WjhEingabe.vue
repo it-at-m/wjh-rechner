@@ -22,6 +22,7 @@
             <v-col cols="12">
               <v-text-field
                 id="familieneinkommen-field"
+                ref="grunddatenFirstField"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.familieneinkommen.label')"
@@ -83,6 +84,7 @@
             <v-col cols="12">
               <v-text-field
                 id="miete-field"
+                ref="wohnungFirstField"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.miete.label')"
@@ -181,6 +183,7 @@
             <v-col cols="12">
               <v-text-field
                 id="kitakosten-geschwister-field"
+                ref="kitakostenFirstField"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
@@ -256,6 +259,7 @@
             <v-col cols="12">
               <v-text-field
                 id="kitakosten-field"
+                ref="ergebnisFirstField"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKosten.label')"
@@ -304,7 +308,7 @@
 </style>
 
 <script setup lang="ts">
-import { defineModel, ref, computed, watch } from 'vue'
+import { defineModel, ref, computed, watch, nextTick  } from 'vue'
 import { UserData } from '@/api/wjhTypes'
 import { getGrundbetragMitFamilie, getMietobergrenze, nebenkostenProQm, grundbetrag, familienzuschlag } from '@/constants'
 import { useI18n } from "vue-i18n";
@@ -325,6 +329,7 @@ const stepNumber = computed(() : number => {
   return getStepNumber(step.value)
 })
 let maxStepNumber = stepNumber.value;
+// maxStepNumber setzen
 watch(stepNumber, (newValue : number) => {
   maxStepNumber = Math.max(newValue, maxStepNumber);
 })
@@ -387,11 +392,62 @@ const resultBack = () => {
 // In der Eingabemaske verwendete Daten.
 const model = defineModel<UserData>({ default: {}})
 const props = defineProps({
+  // gibt an, ob die Anzeige für mobile Geräte optimiert werden soll
   isMobile: {
     type: Boolean,
     default: false
+  },
+  // Gibt an, ob die Komponente bereits aktiv ist
+  isActive: {
+    type: Boolean,
+    default: true
   }
 });
+
+// focus() auf erstes Feld
+const grunddatenFirstField = ref<HTMLInputElement|null>(null)
+const wohnungFirstField = ref<HTMLInputElement|null>(null)
+const kitakostenFirstField = ref<HTMLInputElement|null>(null)
+const ergebnisFirstField = ref<HTMLInputElement|null>(null)
+const focusOnFirstInputInStep = (stepToFocusOn : String|undefined) => {
+  if (!stepToFocusOn) {
+    stepToFocusOn = step.value
+  }
+  nextTick(() => { 
+    switch(stepToFocusOn) {
+      case "grunddaten":
+        if (grunddatenFirstField.value) {
+          grunddatenFirstField.value.focus()
+        }
+        break;
+      case "wohnung":
+        if (wohnungFirstField.value) {
+          wohnungFirstField.value.focus()
+        }
+        break;
+      case "kitakosten":
+        if (kitakostenFirstField.value) {
+          kitakostenFirstField.value.focus()
+        }
+        break;
+      case "ergebnis":
+        if (ergebnisFirstField.value) {
+          ergebnisFirstField.value.focus()
+        }
+        break;
+      default:
+        return;
+    }
+  })
+}
+watch(step, (newValue : String) => {
+  focusOnFirstInputInStep(newValue)
+})
+watch(() => props.isActive, (newValue : boolean) => {
+  if (newValue) {
+    focusOnFirstInputInStep(step.value)
+  }
+})
 
 const showFamilieneinkommenTooltip = ref(false);
 const showEinkommensgrenzeTooltip = ref(false);
