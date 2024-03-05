@@ -114,8 +114,42 @@
               </v-alert>
             </v-col>
             <v-col cols="12">
-              <span class="m-label">{{ $t("app.wjhEingabe.kostenWohnungGesamt") }}: {{ wohnkostenGesamtText }}</span>
-              <span class="m-label">{{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€</span>
+              <span class="m-label">
+                {{ $t("app.wjhEingabe.kostenWohnungGesamt") }}: {{ verwendeteMiete }}€
+                <v-tooltip
+                    v-model="showVerwendeteMieteTooltip"
+                    @click:outside="showVerwendeteMieteTooltip = false"
+                    :text="wohnkostenGesamtBerechnungsText"
+                    open-on-click
+                    close-on-back
+                    :open-on-hover="false"
+                  >
+                    <template v-slot:activator="{ props }">
+                      <v-icon
+                        v-bind="props"
+                        @click="showVerwendeteMieteTooltip = true"
+                      >mdi-information</v-icon>
+                    </template>
+                  </v-tooltip>
+              </span>
+              <span class="m-label">
+                {{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€
+                <v-tooltip
+                    v-model="showEinkommensgrenzeTooltip"
+                    @click:outside="showEinkommensgrenzeTooltip = false"
+                    :text="einkommensgrenzeBerechnungstext"
+                    open-on-click
+                    close-on-back
+                    :open-on-hover="false"
+                  >
+                    <template v-slot:activator="{ props }">
+                      <v-icon
+                        v-bind="props"
+                        @click="showEinkommensgrenzeTooltip = true"
+                      >mdi-information</v-icon>
+                    </template>
+                  </v-tooltip>
+              </span>
               <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
             </v-col>
           </v-row>
@@ -266,7 +300,7 @@
 <script setup lang="ts">
 import { defineModel, ref, computed, watch } from 'vue'
 import { UserData } from '@/api/wjhTypes'
-import { getGrundbetragMitFamilie, getMietobergrenze } from '@/constants'
+import { getGrundbetragMitFamilie, getMietobergrenze, nebenkostenProQm, grundbetrag, familienzuschlag } from '@/constants'
 import { useI18n } from "vue-i18n";
 const { t } = useI18n({ useScope: "global" });
 
@@ -354,6 +388,8 @@ const props = defineProps({
 });
 
 const showFamilieneinkommenTooltip = ref(false);
+const showEinkommensgrenzeTooltip = ref(false);
+const showVerwendeteMieteTooltip = ref(false);
 
 // Grundbetrag der Einkommensgrenze inklusive des Familianzuschlags.
 const grundbetragMitFamilie = computed(() => {
@@ -368,7 +404,7 @@ const mietobergrenze = computed(() => {
 
 // Nebenkosten, anhand der angegebenen Fläche
 const nebenkostenWohnung = computed(() => {
-  return Math.round((model.value.groesseWohnung ?? 0) * 1.2);
+  return Math.round((model.value.groesseWohnung ?? 0) * nebenkostenProQm);
 })
 
 // Nebenkosten, anhand der angegebenen Fläche
@@ -376,9 +412,20 @@ const nebenkostenText = computed(() => {
   return t("app.wjhEingabe.nebenkostenWohnung.label", [nebenkostenWohnung.value]);
 })
 
-// Nebenkosten, anhand der angegebenen Fläche
-const wohnkostenGesamtText = computed(() => {
-  return `${verwendeteMiete.value}€ (${t("app.wjhEingabe.miete.shortLabel")}: ${mieteMitObergrenze.value}€ + ${t("app.wjhEingabe.nebenkostenWohnung.shortLabel")}: ${nebenkostenWohnung.value}€)`;
+// Berechnung der wohnkosten
+const wohnkostenGesamtBerechnungsText = computed(() => {
+  return `${t("app.wjhEingabe.miete.shortLabel")}: ${mieteMitObergrenze.value}€ + ${t("app.wjhEingabe.nebenkostenWohnung.shortLabel")}: ${nebenkostenWohnung.value}€`;
+})
+
+// Berechnung der einkommensgrenze
+const einkommensgrenzeBerechnungstext = computed(() => {
+  const mieteText = `${t("app.wjhEingabe.miete.shortLabel")}: ${verwendeteMiete.value}€`
+  const grundbetragText = `${t("app.wjhEingabe.grundbetrag")}: ${grundbetrag}€`
+
+  const zusaetzlichePersonen = model.value.personenImHaushalt ? model.value.personenImHaushalt-1 : 0
+  const familienzuschlagText = `${zusaetzlichePersonen}*(${t("app.wjhEingabe.familienzuschlag")}: ${familienzuschlag}€)`
+
+  return zusaetzlichePersonen ? `${mieteText} + ${grundbetragText} + ${familienzuschlagText}` : `${mieteText} + ${grundbetragText}`;
 })
 
 // Für die Miete tatsächlich verwendeter Wert unter Berücksichtigung der Mietobergrenze

@@ -1,5 +1,6 @@
 export const grundbetrag = 1182
 export const familienzuschlag = 414
+export const nebenkostenProQm = 1.2
 export const getGrundbetragMitFamilie = (personen : number) : number => {
     return grundbetrag + (personen ? personen-1 : 0) * familienzuschlag;
 }
