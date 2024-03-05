@@ -7,8 +7,8 @@
           :value="step.value"
           :title="$t(`app.wjhEingabe.steps.${step.value}`)"
           :icon="step.icon"
+          :complete-icon="step.icon"
           :edit-icon="step.editIcon ?? 'mdi-pencil'"
-          complete-icon="mdi-check"
           :error="stepErrors[step.value]"
           :complete="getStepNumber(step.value) < stepNumber"
           :editable="getStepNumber(step.value) <= maxStepNumber"
@@ -275,7 +275,7 @@ const steps = [
   { value: "grunddaten", icon: "mdi-cash", editIcon: "mdi-cash-edit" },
   { value: "wohnung", icon: "mdi-home", editIcon: "mdi-home-edit" },
   { value: "kitakosten", icon: "mdi-cash", editIcon: "mdi-cash-edit" },
-  { value: "ergebnis", icon: "mdi-information" }
+  { value: "ergebnis", icon: "mdi-information", editIcon: "mdi-check" }
 ]
 const step = ref("grunddaten")
 const getStepNumber = (step : string) => {
