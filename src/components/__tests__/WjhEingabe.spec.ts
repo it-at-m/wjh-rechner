@@ -9,7 +9,7 @@ config.global.mocks = {
 
 describe('WjhEingabe', () => {
   it('Berechnung mit allen Eingaben ist korrekt', async () => {
-    const wrapper = mount(WjhEingabe, { props: {
+    const wrapper = mount<typeof WjhEingabe>(WjhEingabe, { props: {
       modelValue: {
         familieneinkommen: 5000,
         personenImHaushalt: 3,
@@ -19,19 +19,20 @@ describe('WjhEingabe', () => {
         kitaKostenGeschwister: 1000
       }
     }})
-    expect(wrapper.vm.grundbetragMitFamilie).toEqual(2010)
-    expect(wrapper.vm.mietobergrenze).toEqual(1415)
-    expect(wrapper.vm.nebenkostenWohnung).toEqual(120)
-    expect(wrapper.vm.mieteMitObergrenze).toEqual(1415)
-    expect(wrapper.vm.verwendeteMiete).toEqual(1535)
-    expect(wrapper.vm.einkommensgrenze).toEqual(3545)
-    expect(wrapper.vm.uebersteigendesEinkommen).toEqual(1455)
-    expect(wrapper.vm.uebersteigendesEinkommenMinusGeschwister).toEqual(455)
-    expect(wrapper.vm.eigenanteil).toEqual(137)
-    expect(wrapper.vm.nichtGefoerderterBetrag).toEqual(137)
-    expect(wrapper.vm.foerderung).toEqual(863)
-    expect(wrapper.vm.grundbetragAusreichend).toEqual(false)
-    expect(wrapper.vm.volleFoerderung).toEqual(false)
+    const component = wrapper.vm as any
+    expect(component.grundbetragMitFamilie).toEqual(2010)
+    expect(component.mietobergrenze).toEqual(1415)
+    expect(component.nebenkostenWohnung).toEqual(120)
+    expect(component.mieteMitObergrenze).toEqual(1415)
+    expect(component.verwendeteMiete).toEqual(1535)
+    expect(component.einkommensgrenze).toEqual(3545)
+    expect(component.uebersteigendesEinkommen).toEqual(1455)
+    expect(component.uebersteigendesEinkommenMinusGeschwister).toEqual(455)
+    expect(component.eigenanteil).toEqual(137)
+    expect(component.nichtGefoerderterBetrag).toEqual(137)
+    expect(component.foerderung).toEqual(863)
+    expect(component.grundbetragAusreichend).toEqual(false)
+    expect(component.volleFoerderung).toEqual(false)
   })
 
   it('Berechnung mit erstem Schritt ist korrekt', async () => {
@@ -45,19 +46,20 @@ describe('WjhEingabe', () => {
         kitaKostenGeschwister: 0
       }
     }})
-    expect(wrapper.vm.grundbetragMitFamilie).toEqual(2010)
-    expect(wrapper.vm.mietobergrenze).toEqual(1415)
-    expect(wrapper.vm.nebenkostenWohnung).toEqual(0)
-    expect(wrapper.vm.mieteMitObergrenze).toEqual(0)
-    expect(wrapper.vm.verwendeteMiete).toEqual(0)
-    expect(wrapper.vm.einkommensgrenze).toEqual(2010)
-    expect(wrapper.vm.uebersteigendesEinkommen).toEqual(0)
-    expect(wrapper.vm.uebersteigendesEinkommenMinusGeschwister).toEqual(0)
-    expect(wrapper.vm.eigenanteil).toEqual(0)
-    expect(wrapper.vm.nichtGefoerderterBetrag).toEqual(0)
-    expect(wrapper.vm.foerderung).toEqual(1000)
-    expect(wrapper.vm.grundbetragAusreichend).toEqual(true)
-    expect(wrapper.vm.volleFoerderung).toEqual(true)
+    const component = wrapper.vm as any
+    expect(component.grundbetragMitFamilie).toEqual(2010)
+    expect(component.mietobergrenze).toEqual(1415)
+    expect(component.nebenkostenWohnung).toEqual(0)
+    expect(component.mieteMitObergrenze).toEqual(0)
+    expect(component.verwendeteMiete).toEqual(0)
+    expect(component.einkommensgrenze).toEqual(2010)
+    expect(component.uebersteigendesEinkommen).toEqual(0)
+    expect(component.uebersteigendesEinkommenMinusGeschwister).toEqual(0)
+    expect(component.eigenanteil).toEqual(0)
+    expect(component.nichtGefoerderterBetrag).toEqual(0)
+    expect(component.foerderung).toEqual(1000)
+    expect(component.grundbetragAusreichend).toEqual(true)
+    expect(component.volleFoerderung).toEqual(true)
   })
 
   it('Berechnung mit ersten beiden Schritten ist korrekt', async () => {
@@ -71,18 +73,19 @@ describe('WjhEingabe', () => {
         kitaKostenGeschwister: 0
       }
     }})
-    expect(wrapper.vm.grundbetragMitFamilie).toEqual(2424)
-    expect(wrapper.vm.mietobergrenze).toEqual(1726)
-    expect(wrapper.vm.nebenkostenWohnung).toEqual(60)
-    expect(wrapper.vm.mieteMitObergrenze).toEqual(1000)
-    expect(wrapper.vm.verwendeteMiete).toEqual(1060)
-    expect(wrapper.vm.einkommensgrenze).toEqual(3484)
-    expect(wrapper.vm.uebersteigendesEinkommen).toEqual(0)
-    expect(wrapper.vm.uebersteigendesEinkommenMinusGeschwister).toEqual(0)
-    expect(wrapper.vm.eigenanteil).toEqual(0)
-    expect(wrapper.vm.nichtGefoerderterBetrag).toEqual(0)
-    expect(wrapper.vm.foerderung).toEqual(400)
-    expect(wrapper.vm.grundbetragAusreichend).toEqual(false)
-    expect(wrapper.vm.volleFoerderung).toEqual(true)
+    const component = wrapper.vm as any
+    expect(component.grundbetragMitFamilie).toEqual(2424)
+    expect(component.mietobergrenze).toEqual(1726)
+    expect(component.nebenkostenWohnung).toEqual(60)
+    expect(component.mieteMitObergrenze).toEqual(1000)
+    expect(component.verwendeteMiete).toEqual(1060)
+    expect(component.einkommensgrenze).toEqual(3484)
+    expect(component.uebersteigendesEinkommen).toEqual(0)
+    expect(component.uebersteigendesEinkommenMinusGeschwister).toEqual(0)
+    expect(component.eigenanteil).toEqual(0)
+    expect(component.nichtGefoerderterBetrag).toEqual(0)
+    expect(component.foerderung).toEqual(400)
+    expect(component.grundbetragAusreichend).toEqual(false)
+    expect(component.volleFoerderung).toEqual(true)
   })
 })
