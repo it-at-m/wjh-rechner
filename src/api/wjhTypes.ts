@@ -5,10 +5,8 @@
 export class UserData {
   familieneinkommen : number = 0;
   personenImHaushalt?: number = 1;
-  appartementSize?: number = 0;
   miete?: number = 0;
   groesseWohnung?: number = 0;
-  otherReductions?: number = 0;
   kitaKosten?: number = 0;
   kitaKostenGeschwister?: number = 0;
 }

@@ -21,6 +21,7 @@
           <v-row>
             <v-col cols="12">
               <v-text-field
+                id="familieneinkommen-field"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.familieneinkommen.label')"
@@ -52,6 +53,7 @@
             </v-col>
             <v-col cols="12">
               <v-text-field
+                id="personen-field"
                 class="required"
                 prepend-inner-icon="mdi-account-group"
                 :label="$t('app.wjhEingabe.personenImHaushalt.label')"
@@ -64,7 +66,7 @@
             </v-col>
           </v-row>
           <v-row justify="end" class="px-3">
-            <v-btn @click="grunddatenNext" :disabled="!grunddatenValid">
+            <v-btn id="grunddaten-next-button" @click="grunddatenNext" :disabled="!grunddatenValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -80,6 +82,7 @@
           <v-row>
             <v-col cols="12">
               <v-text-field
+                id="miete-field"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.miete.label')"
@@ -92,6 +95,7 @@
             </v-col>
             <v-col cols="12">
               <v-text-field
+                id="groesse-wohnung-field"
                 class="required"
                 prepend-inner-icon="mdi-vector-square"
                 :label="$t('app.wjhEingabe.groesseWohnung')"
@@ -154,13 +158,13 @@
             </v-col>
           </v-row>
           <v-row justify="space-between" class="px-3">
-            <v-btn @click="step='grunddaten'">
+            <v-btn id="wohnung-back-button" @click="step='grunddaten'">
               <svg aria-hidden="true" class="m-button__icon ml-0 mr-2">
                 <use xlink:href="#icon-arrow-left"></use>
               </svg>
               {{ $t("app.wjhEingabe.steps.zurueck") }}
             </v-btn>
-            <v-btn @click="wohnungNext" :disabled="!wohnungValid">
+            <v-btn id="wohnung-next-button" @click="wohnungNext" :disabled="!wohnungValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -176,6 +180,7 @@
           <v-row>
             <v-col cols="12">
               <v-text-field
+                id="kitakosten-geschwister-field"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
@@ -202,13 +207,13 @@
             </v-col>
           </v-row>
           <v-row justify="space-between" class="px-3">
-            <v-btn @click="step='wohnung'">
+            <v-btn id="kitakosten-back-button" @click="step='wohnung'">
               <svg aria-hidden="true" class="m-button__icon ml-0 mr-2">
                 <use xlink:href="#icon-arrow-left"></use>
               </svg>
               {{ $t("app.wjhEingabe.steps.zurueck") }}
             </v-btn>
-            <v-btn @click="kitakostenNext" :disabled="!kitakostenValid">
+            <v-btn id="kitakosten-next-button" @click="kitakostenNext" :disabled="!kitakostenValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -250,6 +255,7 @@
           <v-row>
             <v-col cols="12">
               <v-text-field
+                id="kitakosten-field"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKosten.label')"
@@ -280,7 +286,7 @@
             </v-col>
           </v-row>
           <v-row justify="space-between" class="px-3">
-            <v-btn @click="resultBack">
+            <v-btn id="result-back-button" @click="resultBack">
               <svg aria-hidden="true" class="m-button__icon ml-0 mr-2">
                 <use xlink:href="#icon-arrow-left"></use>
               </svg>
@@ -458,14 +464,9 @@ const eigenanteil = computed(() => {
   return Math.round(uebersteigendesEinkommenMinusGeschwister.value * 0.3);
 })
 
-// Anteil des Einkommens, der für die Kita-Kosten belastet wird.
-const belastbaresEinkommen = computed(() => {
-  return Math.max(0, eigenanteil.value);
-})
-
 // Anteil der Kitakosten, die vorraussichtlich selbst gezahlt werden müssen.
 const nichtGefoerderterBetrag = computed(() => {
-  return Math.min(belastbaresEinkommen.value, (model.value.kitaKosten ?? 0));
+  return Math.min(eigenanteil.value, (model.value.kitaKosten ?? 0));
 })
 // Anteil der Kitakosten, der vorraussichtlich gefördert wird.
 const foerderung = computed(() => {
