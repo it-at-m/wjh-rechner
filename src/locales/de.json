@@ -3,7 +3,6 @@
         "name": "Orientierungsrechner für WJH (wirtschaftliche Jugendhilfe)",
         "description": "Der Rechner dient nur zur Orientierung über eine mögliche finanzielle Unterstützung beim KITA-Beitrag der freien Träger der LHM durch die wirtschaftliche Jugendhilfe des Sozialreferates (WJH). Bitte geben Sie Ihre Daten für eine Berechnung je Kind ein.",
         "haftungsausschluss": "Es handelt sich hierbei um eine erste Überschlagsberechnung. Aus dem Ergebnis ergibt sich kein Anspruch auf eine Kostenübernahme durch die WJH.",
-        "haftungsausschlussSpezialfaelle": "Die angezeigten Informationen erheben nicht den Anspruch der vollständigen Berücksichtigung aller Spezialfälle.",
         "einverstaendnisabfrage": {
             "label": "Einverständnisabfrage",
             "message": "Die Berechnung des möglichen Eigenanteils zur WJH finden ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
@@ -39,6 +38,7 @@
                 "description": "Kaltmiete"
             },
             "nebenkostenWohnung": "Kosten für Warmwasser und Heizung (1,20€ pro qm): {0}€",
+            "kostenWohnungGesamt": "berücksichtigungsfähige Kosten der Unterkunft",
             "groesseWohnung": "Fläche der Wohnung (qm)",
             "mietobergrenze": {
                 "label": "Mietobergrenze",
@@ -58,7 +58,7 @@
             }
         },
         "wjhErgebnis": {
-            "volleFoerderung": "Das Einkommen übersteigt die Einkommensgrenze nicht. Die Kosten werden vorraussichtlich komplett gefördert.",
+            "volleFoerderung": "Das Einkommen übersteigt die Einkommensgrenze nicht. Die Kosten werden voraussichtlich in voller Höhe übernommen.",
             "teilfoerderung": "Das Einkommen liegt über der Einkommensgrenze. Die Kosten werden nur zum Teil gefördert.",
             "foerderung": "Voraussichtlicher Zuschuss",
             "eigenanteil": "Voraussichtlicher Eigenanteil",

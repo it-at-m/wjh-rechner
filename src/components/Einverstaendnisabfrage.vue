@@ -16,8 +16,6 @@
           <span>{{ $t("app.description") }}</span>
           <br />
           <span>{{ $t("app.haftungsausschluss") }}</span>
-          <br />
-          <span>{{ $t("app.haftungsausschlussSpezialfaelle") }}</span>
         </v-alert>
         <span>{{ $t("app.einverstaendnisabfrage.message") }}</span>
       </v-card-text>

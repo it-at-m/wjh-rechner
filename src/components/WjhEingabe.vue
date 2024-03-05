@@ -111,12 +111,11 @@
                   {{ $t("app.wjhEingabe.mietobergrenze.description") }}
                 </span>
                 <br/>
-                <b>{{ $t("app.wjhEingabe.einkommensgrenze") }}: </b>
-                <span>{{ einkommensgrenze }}€</span>
-                <br/>
               </v-alert>
             </v-col>
             <v-col cols="12">
+              <span class="m-label">{{ $t("app.wjhEingabe.kostenWohnungGesamt") }}: {{ verwendeteMiete }}€</span>
+              <span class="m-label">{{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€</span>
               <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
             </v-col>
           </v-row>
