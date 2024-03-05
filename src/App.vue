@@ -3,8 +3,11 @@
     <h2 class="px-4 pt-1">{{ $t("app.name") }}</h2>
     <einverstaendnisabfrage v-model="confirmConsent" />
     <wjh-eingabe v-model="userDataValue" :is-mobile="isMobile" />
+    <a class="impressum" href="https://stadt.muenchen.de/infos/impressum-datenschutz.html" target="_blank">
+      {{ $t("app.impressum") }}
+    </a>
     <a class="github-link" href="https://github.com/it-at-m/wjh-rechner" target="_blank">
-      <v-icon>mdi-github-circle</v-icon>
+      <v-icon>mdi-git</v-icon>
     </a>
   </v-app>
 </template>
@@ -36,6 +39,12 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 
 .table-striped tbody tr:nth-of-type(odd) td {
   background-color: rgba(var(--v-theme-surface-variant), 0.035) !important;
+}
+
+.impressum {
+  position: fixed;
+  bottom: 0px;
+  left: 4px;
 }
 
 .github-link {

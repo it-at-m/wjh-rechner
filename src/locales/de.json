@@ -3,6 +3,7 @@
         "name": "Orientierungsrechner für WJH (wirtschaftliche Jugendhilfe)",
         "description": "Der Rechner dient nur zur Orientierung über eine mögliche finanzielle Unterstützung beim KITA-Beitrag der freien Träger der LHM durch die wirtschaftliche Jugendhilfe des Sozialreferates (WJH). Bitte geben Sie Ihre Daten für eine Berechnung je Kind ein.",
         "haftungsausschluss": "Es handelt sich hierbei um eine erste Überschlagsberechnung. Aus dem Ergebnis ergibt sich kein Anspruch auf eine Kostenübernahme durch die WJH.",
+        "impressum": "Impressum",
         "einverstaendnisabfrage": {
             "label": "Einverständnisabfrage",
             "message": "Die Berechnung des möglichen Eigenanteils zur WJH finden ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
@@ -51,7 +52,7 @@
             "uebersteigendesEinkommenReduziert": "Übersteigendes Einkommen",
             "eigenanteil": {
                 "label": "Zumutbare Belastung (30%)",
-                "description": "Ihr voraussichtlicher Eigenanteil am Kita-Beitrag."
+                "description": "⇒ Ihr voraussichtlicher Eigenanteil am Kita-Beitrag."
             },
             "kitaKosten": {
                 "label": "Kitakosten Kind"
