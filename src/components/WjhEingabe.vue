@@ -105,7 +105,7 @@
                 :placeholder="$t('app.wjhEingabe.groesseWohnung')"
                 type="number"
                 :hint="nebenkostenText"
-                :rules="geldBetragRules"
+                :rules="wohungsgroesseRules"
               />
             </v-col>
             <v-col v-if="mietobergrenze < (model.miete ?? 0)" cols="12">
@@ -556,6 +556,12 @@ const geldBetragRules = [
   (v : number) => !!v || v === 0 || t("validation.zahl"),
   (v : number) => v >= 0 || t("validation.positiveZahl"),
   (v : number) => v <= 1000000 || t("validation.maximalbetrag")
+]
+
+const wohungsgroesseRules = [
+  (v : number) => !!v || v === 0 || t("validation.zahl"),
+  (v : number) => v >= 0 || t("validation.positiveZahl"),
+  (v : number) => v <= 1000 || t("validation.zuGross")
 ]
 
 const personenAnzahlRules = [
