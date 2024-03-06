@@ -6,13 +6,14 @@
     <a class="impressum" href="https://stadt.muenchen.de/infos/impressum-datenschutz.html" target="_blank">
       {{ $t("app.impressum") }}
     </a>
-    <a class="github-link" href="https://github.com/it-at-m/wjh-rechner" target="_blank">
+    <a class="github-link" :href="impressumLink" target="_blank">
       <v-icon>mdi-git</v-icon>
     </a>
   </v-app>
 </template>
 
 <script setup lang="ts">
+import { impressumLink } from '@/constants'
 import WjhEingabe from '@/components/WjhEingabe.vue';
 import Einverstaendnisabfrage from '@/components/Einverstaendnisabfrage.vue';
 import { ref } from 'vue'

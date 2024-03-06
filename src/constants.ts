@@ -1,3 +1,5 @@
+export const impressumLink = "https://github.com/it-at-m/wjh-rechner"
+
 export const grundbetrag = 1182
 export const familienzuschlag = 414
 export const nebenkostenProQm = 1.2

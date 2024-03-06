@@ -1,17 +1,17 @@
 <template>
-  <v-stepper v-model="step" @keyup.enter="nextStep" :mobile="isMobile">
+  <v-stepper v-model="step" :mobile="isMobile" @keyup.enter="nextStep">
     <v-stepper-header>
         <v-stepper-item
-          v-for="step in steps"
-          :key="step.value"
-          :value="step.value"
-          :title="$t(`app.wjhEingabe.steps.${step.value}`)"
-          :icon="step.icon"
-          :complete-icon="step.icon"
-          :edit-icon="step.editIcon ?? 'mdi-pencil'"
-          :error="stepErrors[step.value]"
-          :complete="getStepNumber(step.value) < stepNumber"
-          :editable="getStepNumber(step.value) <= maxStepNumber"
+          v-for="currentStep in steps"
+          :key="currentStep.value"
+          :value="currentStep.value"
+          :title="$t(`app.wjhEingabe.steps.${currentStep.value}`)"
+          :icon="currentStep.icon"
+          :complete-icon="currentStep.icon"
+          :edit-icon="currentStep.editIcon ?? 'mdi-pencil'"
+          :error="stepErrors[currentStep.value]"
+          :complete="getStepNumber(currentStep.value) < stepNumber"
+          :editable="getStepNumber(currentStep.value) <= maxStepNumber"
         />
     </v-stepper-header>
     <v-stepper-window>
@@ -23,28 +23,28 @@
               <v-text-field
                 id="familieneinkommen-field"
                 ref="grunddatenFirstField"
+                v-model.number="model.familieneinkommen"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.familieneinkommen.label')"
                 :placeholder="$t('app.wjhEingabe.familieneinkommen.label')"
                 :hint="$t('app.wjhEingabe.familieneinkommen.description')"
                 type="number"
-                v-model.number="model.familieneinkommen"
                 :rules="geldBetragRules"
               >
-                <template v-slot:append-inner>
+                <template #append-inner>
                   <v-tooltip
                     v-model="showFamilieneinkommenTooltip"
-                    @click:outside="showFamilieneinkommenTooltip = false"
                     :text="$t('app.wjhEingabe.familieneinkommen.additionalHint')"
                     width="400px"
                     open-on-click
                     close-on-back
                     :open-on-hover="false"
+                    @click:outside="showFamilieneinkommenTooltip = false"
                   >
-                    <template v-slot:activator="{ props }">
+                    <template #activator="{ props: activatorProps }">
                       <v-icon
-                        v-bind="props"
+                        v-bind="activatorProps"
                         @click="showFamilieneinkommenTooltip = true"
                       >mdi-information</v-icon>
                     </template>
@@ -55,6 +55,7 @@
             <v-col cols="12">
               <v-text-field
                 id="personen-field"
+                v-model.number="model.personenImHaushalt"
                 class="required"
                 prepend-inner-icon="mdi-account-group"
                 :label="$t('app.wjhEingabe.personenImHaushalt.label')"
@@ -62,12 +63,11 @@
                 type="number"
                 :hint="$t('app.wjhEingabe.personenImHaushalt.description')"
                 :rules="personenAnzahlRules"
-                v-model.number="model.personenImHaushalt"
               />
             </v-col>
           </v-row>
           <v-row justify="end" class="px-3">
-            <v-btn id="grunddaten-next-button" @click="grunddatenNext" :disabled="!grunddatenValid">
+            <v-btn id="grunddaten-next-button" :disabled="!grunddatenValid" @click="grunddatenNext">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -85,30 +85,30 @@
               <v-text-field
                 id="miete-field"
                 ref="wohnungFirstField"
+                v-model.number="model.miete"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.miete.label')"
                 :placeholder="$t('app.wjhEingabe.miete.label')"
                 type="number"
                 :hint="$t('app.wjhEingabe.miete.description')"
-                v-model.number="model.miete"
                 :rules="geldBetragRules"
               />
             </v-col>
             <v-col cols="12">
               <v-text-field
                 id="groesse-wohnung-field"
+                v-model.number="model.groesseWohnung"
                 class="required"
                 prepend-inner-icon="mdi-vector-square"
                 :label="$t('app.wjhEingabe.groesseWohnung')"
                 :placeholder="$t('app.wjhEingabe.groesseWohnung')"
                 type="number"
                 :hint="nebenkostenText"
-                v-model.number="model.groesseWohnung"
                 :rules="geldBetragRules"
               />
             </v-col>
-            <v-col cols="12" v-if="mietobergrenze < (model.miete ?? 0)">
+            <v-col v-if="mietobergrenze < (model.miete ?? 0)" cols="12">
               <v-alert type="info" color="primary">
                 <b>{{ $t("app.wjhEingabe.mietobergrenze.label") }}: </b>
                 <span>{{ mietobergrenze }}€</span>
@@ -124,15 +124,15 @@
                 {{ $t("app.wjhEingabe.kostenWohnungGesamt") }}: {{ verwendeteMiete }}€
                 <v-tooltip
                     v-model="showVerwendeteMieteTooltip"
-                    @click:outside="showVerwendeteMieteTooltip = false"
                     :text="wohnkostenGesamtBerechnungsText"
                     open-on-click
                     close-on-back
                     :open-on-hover="false"
+                    @click:outside="showVerwendeteMieteTooltip = false"
                   >
-                    <template v-slot:activator="{ props }">
+                    <template #activator="{ props: activatorProps }">
                       <v-icon
-                        v-bind="props"
+                        v-bind="activatorProps"
                         @click="showVerwendeteMieteTooltip = true"
                       >mdi-information</v-icon>
                     </template>
@@ -142,15 +142,15 @@
                 {{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€
                 <v-tooltip
                     v-model="showEinkommensgrenzeTooltip"
-                    @click:outside="showEinkommensgrenzeTooltip = false"
                     :text="einkommensgrenzeBerechnungstext"
                     open-on-click
                     close-on-back
                     :open-on-hover="false"
+                    @click:outside="showEinkommensgrenzeTooltip = false"
                   >
-                    <template v-slot:activator="{ props }">
+                    <template #activator="{ props: activatorProps }">
                       <v-icon
-                        v-bind="props"
+                        v-bind="activatorProps"
                         @click="showEinkommensgrenzeTooltip = true"
                       >mdi-information</v-icon>
                     </template>
@@ -166,7 +166,7 @@
               </svg>
               {{ $t("app.wjhEingabe.steps.zurueck") }}
             </v-btn>
-            <v-btn id="wohnung-next-button" @click="wohnungNext" :disabled="!wohnungValid">
+            <v-btn id="wohnung-next-button" :disabled="!wohnungValid" @click="wohnungNext">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -184,13 +184,13 @@
               <v-text-field
                 id="kitakosten-geschwister-field"
                 ref="kitakostenFirstField"
+                v-model.number="model.kitaKostenGeschwister"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
                 :placeholder="$t('app.wjhEingabe.kitaKostenGeschwister.label')"
                 type="number"
                 :hint="$t('app.wjhEingabe.kitaKostenGeschwister.description')"
-                v-model.number="model.kitaKostenGeschwister"
                 :rules="geldBetragRules"
               />
             </v-col>
@@ -216,7 +216,7 @@
               </svg>
               {{ $t("app.wjhEingabe.steps.zurueck") }}
             </v-btn>
-            <v-btn id="kitakosten-next-button" @click="kitakostenNext" :disabled="!kitakostenValid">
+            <v-btn id="kitakosten-next-button" :disabled="!kitakostenValid" @click="kitakostenNext">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -239,7 +239,7 @@
                 {{ $t("app.wjhErgebnis.volleFoerderung") }}
               </v-alert>
             </v-col>
-            <v-col cols="12" v-else>
+            <v-col v-else cols="12">
               <v-alert type="info" color="primary">
                 <span>{{ $t("app.wjhErgebnis.teilfoerderung") }}</span>
                 <br />
@@ -260,12 +260,12 @@
               <v-text-field
                 id="kitakosten-field"
                 ref="ergebnisFirstField"
+                v-model.number="model.kitaKosten"
                 class="required"
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKosten.label')"
                 :placeholder="$t('app.wjhEingabe.kitaKosten.label')"
                 type="number"
-                v-model.number="model.kitaKosten"
                 :rules="geldBetragRules"
               />
             </v-col>
@@ -303,9 +303,6 @@
     </v-stepper-window>
   </v-stepper>
 </template>
-
-<style scoped>
-</style>
 
 <script setup lang="ts">
 import { defineModel, ref, computed, watch, nextTick  } from 'vue'
@@ -567,3 +564,6 @@ const personenAnzahlRules = [
   (v : number) => v <= 100 || t("validation.zuGross")
 ]
 </script>
+
+<style scoped>
+</style>

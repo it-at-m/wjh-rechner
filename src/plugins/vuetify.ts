@@ -10,7 +10,6 @@ import 'vuetify/styles'
 
 // Composables
 import {Blueprint, createVuetify} from 'vuetify'
-import { md3 } from 'vuetify/blueprints'
 import {muenchendeBlueprint} from "@/muenchende-blueprint";
 
 export default createVuetify({

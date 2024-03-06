@@ -20,7 +20,7 @@
         <span>{{ $t("app.einverstaendnisabfrage.message") }}</span>
       </v-card-text>
       <v-card-actions id="einverstaendnisabfrage-message" class="justify-end">
-        <v-btn @click="confirm" variant="flat" class="mx-4 mb-2">
+        <v-btn variant="flat" class="mx-4 mb-2" @click="confirm">
           {{ $t("app.einverstaendnisabfrage.confirm") }}
           <svg aria-hidden="true" class="m-button__icon">
             <use xlink:href="#icon-arrow-right"></use>
@@ -30,9 +30,6 @@
     </v-card>
   </v-dialog>
 </template>
-
-<style scoped>
-</style>
 
 <script setup lang="ts">
 import { defineModel, onMounted } from 'vue'
@@ -54,3 +51,6 @@ onMounted(() => {
   window.addEventListener('keyup', enterListener);
 })
 </script>
+
+<style scoped>
+</style>
