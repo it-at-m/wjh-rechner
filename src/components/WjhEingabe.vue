@@ -1,5 +1,5 @@
 <template>
-  <v-stepper v-model="step" :mobile="isMobile" @keyup.enter="nextStep">
+  <v-stepper id="wjh-stepper" v-model="step" :mobile="isMobile">
     <v-stepper-header>
         <v-stepper-item
           v-for="currentStep in steps"
@@ -16,7 +16,7 @@
     </v-stepper-header>
     <v-stepper-window>
       <v-stepper-window-item value="grunddaten">
-        <v-form v-model="grunddatenValid" @submit="$event.preventDefault()">
+        <v-form v-model="grunddatenValid" @submit.prevent.stop="nextStep">
         <v-container>
           <v-row>
             <v-col cols="12">
@@ -67,7 +67,7 @@
             </v-col>
           </v-row>
           <v-row justify="end" class="px-3">
-            <v-btn id="grunddaten-next-button" :disabled="!grunddatenValid" @click="grunddatenNext">
+            <v-btn id="grunddaten-next-button" type="submit" :disabled="!grunddatenValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -78,7 +78,7 @@
         </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="wohnung">
-        <v-form v-model="wohnungValid" @submit="$event.preventDefault()">
+        <v-form v-model="wohnungValid" @submit.prevent.stop="nextStep">
         <v-container>
           <v-row>
             <v-col cols="12">
@@ -166,7 +166,7 @@
               </svg>
               {{ $t("app.wjhEingabe.steps.zurueck") }}
             </v-btn>
-            <v-btn id="wohnung-next-button" :disabled="!wohnungValid" @click="wohnungNext">
+            <v-btn id="wohnung-next-button" type="submit" :disabled="!wohnungValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -177,7 +177,7 @@
         </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="kitakosten">
-        <v-form v-model="kitakostenValid" @submit="$event.preventDefault()">
+        <v-form v-model="kitakostenValid" @submit.prevent.stop="nextStep">
         <v-container>
           <v-row>
             <v-col cols="12">
@@ -216,7 +216,7 @@
               </svg>
               {{ $t("app.wjhEingabe.steps.zurueck") }}
             </v-btn>
-            <v-btn id="kitakosten-next-button" :disabled="!kitakostenValid" @click="kitakostenNext">
+            <v-btn id="kitakosten-next-button" type="submit" :disabled="!kitakostenValid">
               {{ $t("app.wjhEingabe.steps.weiter") }}
               <svg aria-hidden="true" class="m-button__icon">
                 <use xlink:href="#icon-arrow-right"></use>
@@ -227,7 +227,7 @@
         </v-form>
       </v-stepper-window-item>
       <v-stepper-window-item value="ergebnis">
-        <v-form v-model="ergebnisValid" @submit="$event.preventDefault()">
+        <v-form v-model="ergebnisValid" @submit.prevent.stop="nextStep">
         <v-container>
           <v-row>
             <v-col cols="12" class="py-0">
@@ -335,15 +335,15 @@ const nextStep = () => {
   switch(step.value) {
     case "grunddaten": {
       grunddatenNext()
-      break
+      return
     }
     case "wohnung": {
       wohnungNext()
-      break
+      return
     }
     case "kitakosten": {
       kitakostenNext()
-      break
+      return
     }
   }
 }
@@ -401,35 +401,35 @@ const props = defineProps({
   }
 });
 
-// focus() auf erstes Feld
+// select() auf erstes Feld
 const grunddatenFirstField = ref<HTMLInputElement|null>(null)
 const wohnungFirstField = ref<HTMLInputElement|null>(null)
 const kitakostenFirstField = ref<HTMLInputElement|null>(null)
 const ergebnisFirstField = ref<HTMLInputElement|null>(null)
-const focusOnFirstInputInStep = (stepToFocusOn : String|undefined) => {
-  if (!stepToFocusOn) {
-    stepToFocusOn = step.value
+const selectFirstInputInStep = (stepToSelect : String|undefined) => {
+  if (!stepToSelect) {
+    stepToSelect = step.value
   }
   nextTick(() => { 
-    switch(stepToFocusOn) {
+    switch(stepToSelect) {
       case "grunddaten":
         if (grunddatenFirstField.value) {
-          grunddatenFirstField.value.focus()
+          grunddatenFirstField.value.select()
         }
         break;
       case "wohnung":
         if (wohnungFirstField.value) {
-          wohnungFirstField.value.focus()
+          wohnungFirstField.value.select()
         }
         break;
       case "kitakosten":
         if (kitakostenFirstField.value) {
-          kitakostenFirstField.value.focus()
+          kitakostenFirstField.value.select()
         }
         break;
       case "ergebnis":
         if (ergebnisFirstField.value) {
-          ergebnisFirstField.value.focus()
+          ergebnisFirstField.value.select()
         }
         break;
       default:
@@ -438,11 +438,11 @@ const focusOnFirstInputInStep = (stepToFocusOn : String|undefined) => {
   })
 }
 watch(step, (newValue : String) => {
-  focusOnFirstInputInStep(newValue)
+  selectFirstInputInStep(newValue)
 })
 watch(() => props.isActive, (newValue : boolean) => {
   if (newValue) {
-    focusOnFirstInputInStep(step.value)
+    selectFirstInputInStep(step.value)
   }
 })
 
@@ -575,5 +575,9 @@ const personenAnzahlRules = [
 .v-window {
   margin-left: 0;
   margin-right: 0;
+}
+
+#wjh-stepper {
+  color: #3A5368;
 }
 </style>

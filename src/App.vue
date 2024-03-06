@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="wjh-rechner-app">
     <h2 class="px-4 pt-1">{{ $t("app.name") }}</h2>
     <einverstaendnisabfrage v-model="confirmConsent" />
     <wjh-eingabe v-model="userDataValue" :is-mobile="isMobile" :is-active="!confirmConsent" />
@@ -26,6 +26,10 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 </script>
 
 <style>
+#wjh-rechner-app {
+  color: #3A5368;
+}
+
 .pointer {
   cursor: pointer;
 }

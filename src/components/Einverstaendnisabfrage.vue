@@ -7,6 +7,7 @@
     persistent
   >
     <v-card
+      id="einverstaendnisabfrage-card"
       variant="flat"
       :title="$t('app.einverstaendnisabfrage.label')"
       @keyup.enter="confirm"
@@ -53,4 +54,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
+#einverstaendnisabfrage-card {
+  color: #3A5368;
+}
 </style>
