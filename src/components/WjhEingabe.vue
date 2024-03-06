@@ -156,7 +156,7 @@
                     </template>
                   </v-tooltip>
               </span>
-              <span class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
+              <span id="uebersteigendes-einkommen" class="m-label">{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: {{ uebersteigendesEinkommen }}€</span>
             </v-col>
           </v-row>
           <v-row justify="space-between" class="px-3">
@@ -200,7 +200,7 @@
                 <span>{{ uebersteigendesEinkommenMinusGeschwister }}€</span>
                 <div v-if="uebersteigendesEinkommenMinusGeschwister > 0">
                   <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
-                  <span>{{ eigenanteil }}€</span>
+                  <span id="eigenanteil">{{ eigenanteil }}€</span>
                   <br />
                   <span>
                     {{ $t("app.wjhEingabe.eigenanteil.description") }}
@@ -247,7 +247,7 @@
                 <span>{{ uebersteigendesEinkommenMinusGeschwister }}€</span>
                 <br />
                 <b>{{ $t("app.wjhEingabe.eigenanteil.label") }}: </b>
-                <span>{{ eigenanteil }}€</span>
+                <span id="ergebnis-eigenanteil">{{ eigenanteil }}€</span>
                 <br />
                 <span>
                   {{ $t("app.wjhEingabe.eigenanteil.description") }}
@@ -283,10 +283,10 @@
           </v-row>
           <v-row justify="space-between">
             <v-col cols="auto">
-              <span class="m-label">{{ $t("app.wjhErgebnis.foerderung") }}: {{ foerderung }}€</span>
+              <span id="ergebnis-foerderung" class="m-label">{{ $t("app.wjhErgebnis.foerderung") }}: {{ foerderung }}€</span>
             </v-col>
             <v-col cols="auto">
-              <span class="m-label">{{ $t("app.wjhErgebnis.eigenanteil") }}: {{ nichtGefoerderterBetrag }}€</span>
+              <span id="ergebnis-nicht-gefoerdert" class="m-label">{{ $t("app.wjhErgebnis.eigenanteil") }}: {{ nichtGefoerderterBetrag }}€</span>
             </v-col>
           </v-row>
           <v-row justify="space-between" class="px-3">

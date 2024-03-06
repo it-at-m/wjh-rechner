@@ -20,7 +20,7 @@
         <span>{{ $t("app.einverstaendnisabfrage.message") }}</span>
       </v-card-text>
       <v-card-actions id="einverstaendnisabfrage-message" class="justify-end">
-        <v-btn variant="flat" class="mx-4 mb-2" @click="confirm">
+        <v-btn id="einverstaendnisabfrage-confirm-button" variant="flat" class="mx-4 mb-2" @click="confirm">
           {{ $t("app.einverstaendnisabfrage.confirm") }}
           <svg aria-hidden="true" class="m-button__icon">
             <use xlink:href="#icon-arrow-right"></use>
