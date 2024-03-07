@@ -7,7 +7,7 @@
       {{ $t('app.impressum') }}
     </a>
     <a class="github-link" :title="$t('app.repository')" :href="githubRepoLink" target="_blank">
-      <v-img :src="githubImgUrl" height="24" width="24" />
+      <v-img :src="githubImgUrl" height="24" width="24" alt="GitHub Logo" />
     </a>
   </v-app>
 </template>
