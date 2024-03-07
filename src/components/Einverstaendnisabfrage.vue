@@ -4,6 +4,7 @@
     v-model="model"
     max-width="1200px"
     class="einverstaendnisabfrage"
+    aria-label="$t('app.einverstaendnisabfrage.label')"
     persistent
   >
     <v-card

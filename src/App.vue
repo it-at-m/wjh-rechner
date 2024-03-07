@@ -6,7 +6,7 @@
     <a class="impressum" href="https://stadt.muenchen.de/infos/impressum-datenschutz.html" target="_blank">
       {{ $t("app.impressum") }}
     </a>
-    <a class="github-link" :href="impressumLink" target="_blank">
+    <a class="github-link" :title="$t('app.repository')" :href="impressumLink" target="_blank">
       <v-icon>mdi-git</v-icon>
     </a>
   </v-app>

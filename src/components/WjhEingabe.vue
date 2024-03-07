@@ -6,6 +6,7 @@
           :key="currentStep.value"
           :value="currentStep.value"
           :title="$t(`app.wjhEingabe.steps.${currentStep.value}`)"
+          :aria-label="$t(`app.wjhEingabe.steps.${currentStep.value}`)"
           :icon="currentStep.icon"
           :complete-icon="currentStep.icon"
           :edit-icon="currentStep.editIcon ?? 'mdi-pencil'"
@@ -36,6 +37,7 @@
                   <v-tooltip
                     v-model="showFamilieneinkommenTooltip"
                     :text="$t('app.wjhEingabe.familieneinkommen.additionalHint')"
+                    :aria-label="$t('app.wjhEingabe.familieneinkommen.additionalHint')"
                     width="400px"
                     open-on-click
                     close-on-back
@@ -45,6 +47,7 @@
                     <template #activator="{ props: activatorProps }">
                       <v-icon
                         v-bind="activatorProps"
+                        :aria-label="$t('app.wjhEingabe.familieneinkommen.tooltipLabel')"
                         @click="showFamilieneinkommenTooltip = true"
                       >mdi-information</v-icon>
                     </template>
@@ -121,10 +124,11 @@
             </v-col>
             <v-col cols="12">
               <span class="m-label">
-                {{ $t("app.wjhEingabe.kostenWohnungGesamt") }}: {{ verwendeteMiete }}€
+                {{ $t("app.wjhEingabe.kostenWohnungGesamt.label") }}: {{ verwendeteMiete }}€
                 <v-tooltip
                     v-model="showVerwendeteMieteTooltip"
                     :text="wohnkostenGesamtBerechnungsText"
+                    :aria-label="$t('app.wjhEingabe.kostenWohnungGesamt.additionalHint')"
                     open-on-click
                     close-on-back
                     :open-on-hover="false"
@@ -133,16 +137,18 @@
                     <template #activator="{ props: activatorProps }">
                       <v-icon
                         v-bind="activatorProps"
+                        :aria-label="$t('app.wjhEingabe.kostenWohnungGesamt.additionalHint')"
                         @click="showVerwendeteMieteTooltip = true"
                       >mdi-information</v-icon>
                     </template>
                   </v-tooltip>
               </span>
               <span class="m-label">
-                {{ $t("app.wjhEingabe.einkommensgrenze") }}: {{ einkommensgrenze }}€
+                {{ $t("app.wjhEingabe.einkommensgrenze.label") }}: {{ einkommensgrenze }}€
                 <v-tooltip
                     v-model="showEinkommensgrenzeTooltip"
                     :text="einkommensgrenzeBerechnungstext"
+                    :aria-label="$t('app.wjhEingabe.einkommensgrenze.additionalHint')"
                     open-on-click
                     close-on-back
                     :open-on-hover="false"
@@ -151,6 +157,7 @@
                     <template #activator="{ props: activatorProps }">
                       <v-icon
                         v-bind="activatorProps"
+                        :aria-label="$t('app.wjhEingabe.einkommensgrenze.additionalHint')"
                         @click="showEinkommensgrenzeTooltip = true"
                       >mdi-information</v-icon>
                     </template>
@@ -273,6 +280,7 @@
               <v-progress-linear
                 :max="model.kitaKosten"
                 :model-value="nichtGefoerderterBetrag"
+                :aria-label="$t('app.wjhErgebnis.progressBarTooltip')"
                 height="10em"
                 bg-color="success"
                 color="error"

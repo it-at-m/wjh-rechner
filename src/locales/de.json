@@ -4,6 +4,7 @@
         "description": "Der Rechner dient nur zur Orientierung über eine mögliche finanzielle Unterstützung beim KITA-Beitrag der freien Träger der LHM durch die wirtschaftliche Jugendhilfe des Sozialreferates (WJH). Bitte geben Sie Ihre Daten für eine Berechnung je Kind ein.",
         "haftungsausschluss": "Es handelt sich hierbei um eine erste Überschlagsberechnung. Aus dem Ergebnis ergibt sich kein Anspruch auf eine Kostenübernahme durch die WJH.",
         "impressum": "Impressum",
+        "repository": "WJH-Rechner auf GitHub",
         "einverstaendnisabfrage": {
             "label": "Einverständnisabfrage",
             "message": "Die Berechnung des möglichen Eigenanteils zur WJH finden ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
@@ -21,7 +22,8 @@
             "familieneinkommen": {
                 "label": "Familieneinkommen (mtl.)",
                 "description": "Monatliche Netto-Einkünfte nicht-selbständige Tätigkeit, selbständige Tätigkeit",
-                "additionalHint": "Zum Familieneinkommen zählen alle Einkünfte der Eltern, Kindergeld, Einkommen des Kindes (z.B. Unterhalt, UVG, Halbwaisenrente) sonstiges Einkommen (Zinseinkünfte, Einkommen aus Vermietung, u.ä.)"
+                "additionalHint": "Zum Familieneinkommen zählen alle Einkünfte der Eltern, Kindergeld, Einkommen des Kindes (z.B. Unterhalt, UVG, Halbwaisenrente) sonstiges Einkommen (Zinseinkünfte, Einkommen aus Vermietung, u.ä.)",
+                "tooltipLabel": "Erklärung zum Familieneinkommen"
             },
             "personenImHaushalt": {
                 "label": "Personen im Haushalt",
@@ -29,7 +31,10 @@
             },
             "grundbetrag": "Grundbetrag",
             "familienzuschlag": "Familienzuschlag",
-            "einkommensgrenze": "ermittelte Einkommensgrenze",
+            "einkommensgrenze": {
+                "label": "ermittelte Einkommensgrenze",
+                "tooltipLabel": "Berechnung der Einkommensgrenze"
+            },
             "uebersteigendesEinkommen": "Höhe des übersteigenden Einkommens",
             "wohnungInfo": "In die Einkommensgrenze werden noch um die Kosten der Miete eingerechnet. Dabei gibt es allerdings Mietobergrenzen, die stattdessen verwendet werden, wenn die Miete darüber liegt.",
             "miete": {
@@ -41,7 +46,10 @@
                 "label": "Kosten für Warmwasser und Heizung (1,20€ pro qm): {0}€",
                 "shortLabel": "Warmwasser und Heizung"
             },
-            "kostenWohnungGesamt": "berücksichtigungsfähige Kosten der Unterkunft",
+            "kostenWohnungGesamt": {
+                "label": "berücksichtigungsfähige Kosten der Unterkunft",
+                "tooltipLabel": "Berechnung der Wohnkosten"
+            },
             "groesseWohnung": "Fläche der Wohnung (qm)",
             "mietobergrenze": {
                 "label": "Mietobergrenze",
@@ -67,7 +75,8 @@
             "eigenanteil": "Voraussichtlicher Eigenanteil",
             "belastbaresEinkommen": "Belastbares Einkommen",
             "title": "Voraussichtlicher Zuschuss",
-            "hint": "Das Ergebnis dient ausschließlich der Orientierung, ob die Beantragung der Förderung aussichtsreich ist. Die tatsächliche Höhe der Förderung kann von den hier angezeigten Ergebnissen abweichen."
+            "hint": "Das Ergebnis dient ausschließlich der Orientierung, ob die Beantragung der Förderung aussichtsreich ist. Die tatsächliche Höhe der Förderung kann von den hier angezeigten Ergebnissen abweichen.",
+            "progressBarTooltip": "Verhältnis zwischen Zuschuss und Eigenanteil."
         }
     },
     "actions": {
