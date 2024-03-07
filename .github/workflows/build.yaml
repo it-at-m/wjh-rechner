@@ -48,8 +48,12 @@ jobs:
       - name: build
         working-directory: ${{ env.NPM_PROJECT_ROOT }}
         run: npm run build
+
+      - name: unit-test
+        working-directory: ${{ env.NPM_PROJECT_ROOT }}
+        run: npm run test
         
-      - name: test
+      - name: cypress-test
         working-directory: ${{ env.NPM_PROJECT_ROOT }}
         run: npm run cypress:run-ci
         
