@@ -2,7 +2,7 @@
 
 Online-Rechner zur Vorab-Berechnung der Förderung zur wirtschaftlichen Jugendhilfe.
 
-### Built With
+### Gebaut mit
 
 * Npm
 * Vue 3
@@ -13,7 +13,6 @@ Online-Rechner zur Vorab-Berechnung der Förderung zur wirtschaftlichen Jugendhi
 
 Siehe [offene Issues](https://github.com/it-at-m/wjh-rechner/issues) für eine Liste der vorgeschlagenen Features (und bekannten Probleme).
 
-
 ## Set up
 
 Wenn Npm installiert ist, kann das Projekt lokal gestartet werden:
@@ -23,31 +22,29 @@ Wenn Npm installiert ist, kann das Projekt lokal gestartet werden:
 
 Weitere Infos sind in der Datei [getting-started.md](https://github.com/it-at-m/wjh-rechner/blob/dev/docs/getting-started.md) zu finden.
 
-## Documentation
+## Dokumentation
 
 *In Arbeit*
 
-## Contributing
+## Beitragen
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Beiträge sind es, die die Open-Source-Community zu einem erstaunlichen Ort machen, um zu lernen, zu inspirieren und zu schaffen. Jeder Beitrag, den Sie leisten, wird sehr geschätzt.
 
-If you have a suggestion that would make this better, please open an issue with the tag "enhancement", fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Wenn Sie einen Vorschlag haben, der dies verbessern würde, öffnen Sie bitte ein Ticket mit dem Tag "Verbesserung", forken Sie das Repo und erstellen Sie eine Pull-Anfrage. Sie können auch einfach ein Ticket mit dem Tag "Verbesserung" öffnen. Vergessen Sie nicht, dem Projekt einen Stern zu geben! Nochmals vielen Dank!
 
-1. Open an issue with the tag "enhancement"
-2. Fork the Project
-3. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-4. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-5. Push to the Branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
+1. Öffnen Sie ein Ticket mit dem Tag "enhancement"
+2. Forken Sie das Projekt
+3. Erstellen Sie Ihren Feature-Branch (`git checkout -b feature/AmazingFeature`)
+4. Committen Sie Ihre Änderungen (`git commit -m 'Add some AmazingFeature'`)
+5. Pushen Sie auf den Branch (`git push origin feature/AmazingFeature`)
+6. Eröffnen Sie eine Pull-Anfrage
 
-More about this in the [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md) file.
+Mehr dazu in der [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md) Datei.
 
-## License
+## Lizenz
 
-Distributed under the MIT License. See [LICENSE](LICENSE) file for more information.
+Verteilt unter der MIT-Lizenz. Weitere Informationen finden Sie in der Datei [LICENSE](LICENSE).
 
-
-## Contact
+## Kontakt
 
 it@M - opensource@muenchen.de
