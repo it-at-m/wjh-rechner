@@ -1,104 +1,95 @@
 {
-    "app": {
-        "name": "Orientierungsrechner für WJH (wirtschaftliche Jugendhilfe)",
-        "description": "Der Rechner dient nur zur Orientierung über eine mögliche finanzielle Unterstützung beim KITA-Beitrag der freien Träger der LHM durch die wirtschaftliche Jugendhilfe des Sozialreferates (WJH). Bitte geben Sie Ihre Daten für eine Berechnung je Kind ein.",
-        "haftungsausschluss": "Es handelt sich hierbei um eine erste Überschlagsberechnung. Aus dem Ergebnis ergibt sich kein Anspruch auf eine Kostenübernahme durch die WJH.",
-        "impressum": "Impressum",
-        "repository": "WJH-Rechner auf GitHub",
-        "einverstaendnisabfrage": {
-            "label": "Einverständnisabfrage",
-            "message": "Die Berechnung des möglichen Eigenanteils zur WJH findet ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
-            "confirm": "Weiter zum Rechner"
-        },
-        "wjhEingabe": {
-            "steps": {
-                "grunddaten": "Einkommen",
-                "wohnung": "Miete",
-                "kitakosten": "Kitakosten",
-                "ergebnis": "Ergebnis",
-                "weiter": "Weiter",
-                "zurueck": "Zurück"
-            },
-            "familieneinkommen": {
-                "label": "Familieneinkommen (mtl.)",
-                "description": "Monatliche Netto-Einkünfte nicht-selbständige Tätigkeit, selbständige Tätigkeit",
-                "additionalHint": "Zum Familieneinkommen zählen alle Einkünfte der Eltern, Kindergeld, Einkommen des Kindes (z.B. Unterhalt, UVG, Halbwaisenrente) sonstiges Einkommen (Zinseinkünfte, Einkommen aus Vermietung, u.ä.)",
-                "tooltipLabel": "Erklärung zum Familieneinkommen"
-            },
-            "personenImHaushalt": {
-                "label": "Personen im Haushalt",
-                "description": "Durch die Anzahl der im Haushalt lebenden Personen wird die Einkommensgrenze ermittelt, sowie die anrechenbaren Kosten der Unterkunft (Miete) bestimmt."
-            },
-            "grundbetrag": "Grundbetrag",
-            "familienzuschlag": "Familienzuschlag",
-            "einkommensgrenze": {
-                "label": "ermittelte Einkommensgrenze",
-                "tooltipLabel": "Berechnung der Einkommensgrenze"
-            },
-            "uebersteigendesEinkommen": "Höhe des übersteigenden Einkommens",
-            "wohnungInfo": "In die Einkommensgrenze werden noch um die Kosten der Miete eingerechnet. Dabei gibt es allerdings Mietobergrenzen, die stattdessen verwendet werden, wenn die Miete darüber liegt.",
-            "miete": {
-                "label": "Kosten der Unterkunft (Miete)",
-                "shortLabel": "Mietkosten",
-                "description": "Kaltmiete"
-            },
-            "nebenkostenWohnung": {
-                "label": "Kosten für Warmwasser und Heizung (1,20€ pro qm): {0}€",
-                "shortLabel": "Warmwasser und Heizung"
-            },
-            "kostenWohnungGesamt": {
-                "label": "berücksichtigungsfähige Kosten der Unterkunft",
-                "tooltipLabel": "Berechnung der Wohnkosten"
-            },
-            "groesseWohnung": "Fläche der Unterkunft (qm)",
-            "mietobergrenze": {
-                "label": "Mietobergrenze",
-                "description": "Die Kaltmiete liegt über dem maximal anrechenbaren Wert. Es wird daher die Mietobergrenze für die weitere Berechnung verwendet."
-            },
-            "uebersteigendesEinkommenReduziert": "Übersteigendes Einkommen",
-            "eigenanteil": {
-                "label": "Zumutbare Belastung (30%)",
-                "description": "⇒ Ihr voraussichtlicher maximaler Eigenanteil am Kita-Beitrag."
-            },
-            "kitaKosten": {
-                "label": "Kitakosten Kind",
-                "description": "Höhe des Kita-Beitrags für das Kind."
-            },
-            "kitaKostenGeschwister": {
-                "label": "Kitakosten Geschwisterkinder",
-                "description": "Kita-Kosten der Geschwister werden ebenfalls berücksichtigt."
-            }
-        },
-        "wjhErgebnis": {
-            "volleFoerderung": "Das Einkommen übersteigt die Einkommensgrenze nicht. Die Kosten werden voraussichtlich in voller Höhe übernommen.",
-            "ueberEinkommensgrenze": "Das Einkommen liegt über der Einkommensgrenze.",
-            "teilfoerderung": "Die Kosten werden nur zum Teil gefördert.",
-            "foerderung": "Voraussichtlicher Zuschuss",
-            "eigenanteil": "Voraussichtlicher Eigenanteil",
-            "belastbaresEinkommen": "Belastbares Einkommen",
-            "title": "Voraussichtlicher Zuschuss",
-            "hint": "Das Ergebnis dient ausschließlich der Orientierung, ob die Beantragung der Förderung aussichtsreich ist. Die tatsächliche Höhe der Förderung kann von den hier angezeigten Ergebnissen abweichen.",
-            "progressBarTooltip": "Verhältnis zwischen Zuschuss und Eigenanteil."
-        }
+  "app": {
+    "name": "Orientierungsrechner für WJH (wirtschaftliche Jugendhilfe)",
+    "description": "Der Rechner dient nur zur Orientierung über eine mögliche finanzielle Unterstützung beim KITA-Beitrag der freien Träger der LHM durch die wirtschaftliche Jugendhilfe des Sozialreferates (WJH). Bitte geben Sie Ihre Daten für eine Berechnung je Kind ein.",
+    "haftungsausschluss": "Es handelt sich hierbei um eine erste Überschlagsberechnung. Aus dem Ergebnis ergibt sich kein Anspruch auf eine Kostenübernahme durch die WJH.",
+    "impressum": "Impressum",
+    "repository": "WJH-Rechner auf GitHub",
+    "einverstaendnisabfrage": {
+      "label": "Einverständnisabfrage",
+      "message": "Die Berechnung des möglichen Eigenanteils zur WJH findet ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
+      "confirm": "Weiter zum Rechner"
     },
-    "actions": {
-        "close": "Schließen",
-        "start": "Startseite"
+    "wjhEingabe": {
+      "steps": {
+        "grunddaten": "Einkommen",
+        "wohnung": "Miete",
+        "kitakosten": "Kitakosten",
+        "ergebnis": "Ergebnis",
+        "weiter": "Weiter",
+        "zurueck": "Zurück"
+      },
+      "familieneinkommen": {
+        "label": "Familieneinkommen (mtl.)",
+        "description": "Monatliche Netto-Einkünfte nicht-selbständige Tätigkeit, selbständige Tätigkeit",
+        "additionalHint": "Zum Familieneinkommen zählen alle Einkünfte der Eltern, Kindergeld, Einkommen des Kindes (z.B. Unterhalt, UVG, Halbwaisenrente) sonstiges Einkommen (Zinseinkünfte, Einkommen aus Vermietung, u.ä.)",
+        "tooltipLabel": "Erklärung zum Familieneinkommen"
+      },
+      "personenImHaushalt": {
+        "label": "Personen im Haushalt",
+        "description": "Durch die Anzahl der im Haushalt lebenden Personen wird die Einkommensgrenze ermittelt, sowie die anrechenbaren Kosten der Unterkunft (Miete) bestimmt."
+      },
+      "grundbetrag": "Grundbetrag",
+      "familienzuschlag": "Familienzuschlag",
+      "einkommensgrenze": {
+        "label": "ermittelte Einkommensgrenze",
+        "tooltipLabel": "Berechnung der Einkommensgrenze"
+      },
+      "uebersteigendesEinkommen": "Höhe des übersteigenden Einkommens",
+      "wohnungInfo": "In die Einkommensgrenze werden noch um die Kosten der Miete eingerechnet. Dabei gibt es allerdings Mietobergrenzen, die stattdessen verwendet werden, wenn die Miete darüber liegt.",
+      "miete": {
+        "label": "Kosten der Unterkunft (Miete)",
+        "shortLabel": "Mietkosten",
+        "description": "Kaltmiete"
+      },
+      "nebenkostenWohnung": {
+        "label": "Kosten für Warmwasser und Heizung (1,20€ pro qm): {0}€",
+        "shortLabel": "Warmwasser und Heizung"
+      },
+      "kostenWohnungGesamt": {
+        "label": "berücksichtigungsfähige Kosten der Unterkunft",
+        "tooltipLabel": "Berechnung der Wohnkosten"
+      },
+      "groesseWohnung": "Fläche der Unterkunft (qm)",
+      "mietobergrenze": {
+        "label": "Mietobergrenze",
+        "description": "Die Kaltmiete liegt über dem maximal anrechenbaren Wert. Es wird daher die Mietobergrenze für die weitere Berechnung verwendet."
+      },
+      "uebersteigendesEinkommenReduziert": "Übersteigendes Einkommen",
+      "eigenanteil": {
+        "label": "Zumutbare Belastung (30%)",
+        "description": "⇒ Ihr voraussichtlicher maximaler Eigenanteil am Kita-Beitrag."
+      },
+      "kitaKosten": {
+        "label": "Kitakosten Kind",
+        "description": "Höhe des Kita-Beitrags für das Kind."
+      },
+      "kitaKostenGeschwister": {
+        "label": "Kitakosten Geschwisterkinder",
+        "description": "Kita-Kosten der Geschwister werden ebenfalls berücksichtigt."
+      }
     },
-    "auditingMetaData": {
-        "name": "Audit",
-        "fields": {
-            "createdBy": "Erfasst von",
-            "createdDate": "Erfasst am",
-            "lastModifiedBy": "Zuletzt geändert von",
-            "lastModifiedDate": "Zuletzt geändert am"
-        }
-    },
-    "validation": {
-        "zahl": "Bitte eine gültige Zahl eingeben.",
-        "positiveZahl": "Der Betrag muss positiv sein.",
-        "maximalbetrag": "Der Rechner funktioniert nur für Beträge bis 1.000.000 €.",
-        "mindestensEins": "Die Anzahl muss mindestens 1 sein.",
-        "zuGross": "Der Wert ist zu groß."
+    "wjhErgebnis": {
+      "volleFoerderung": "Das Einkommen übersteigt die Einkommensgrenze nicht. Die Kosten werden voraussichtlich in voller Höhe übernommen.",
+      "ueberEinkommensgrenze": "Das Einkommen liegt über der Einkommensgrenze.",
+      "teilfoerderung": "Die Kosten werden nur zum Teil gefördert.",
+      "foerderung": "Voraussichtlicher Zuschuss",
+      "eigenanteil": "Voraussichtlicher Eigenanteil",
+      "belastbaresEinkommen": "Belastbares Einkommen",
+      "title": "Voraussichtlicher Zuschuss",
+      "hint": "Das Ergebnis dient ausschließlich der Orientierung, ob die Beantragung der Förderung aussichtsreich ist. Die tatsächliche Höhe der Förderung kann von den hier angezeigten Ergebnissen abweichen.",
+      "progressBarTooltip": "Verhältnis zwischen Zuschuss und Eigenanteil."
     }
+  },
+  "actions": {
+    "close": "Schließen",
+    "start": "Startseite"
+  },
+  "validation": {
+    "zahl": "Bitte eine gültige Zahl eingeben.",
+    "positiveZahl": "Der Betrag muss positiv sein.",
+    "maximalbetrag": "Der Rechner funktioniert nur für Beträge bis 1.000.000 €.",
+    "mindestensEins": "Die Anzahl muss mindestens 1 sein.",
+    "zuGross": "Der Wert ist zu groß."
+  }
 }
