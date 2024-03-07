@@ -7,7 +7,7 @@
         "repository": "WJH-Rechner auf GitHub",
         "einverstaendnisabfrage": {
             "label": "Einverständnisabfrage",
-            "message": "Die Berechnung des möglichen Eigenanteils zur WJH finden ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
+            "message": "Die Berechnung des möglichen Eigenanteils zur WJH findet ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
             "confirm": "Weiter zum Rechner"
         },
         "wjhEingabe": {
@@ -50,7 +50,7 @@
                 "label": "berücksichtigungsfähige Kosten der Unterkunft",
                 "tooltipLabel": "Berechnung der Wohnkosten"
             },
-            "groesseWohnung": "Fläche der Wohnung (qm)",
+            "groesseWohnung": "Fläche der Unterkunft (qm)",
             "mietobergrenze": {
                 "label": "Mietobergrenze",
                 "description": "Die Kaltmiete liegt über dem maximal anrechenbaren Wert. Es wird daher die Mietobergrenze für die weitere Berechnung verwendet."
@@ -58,10 +58,11 @@
             "uebersteigendesEinkommenReduziert": "Übersteigendes Einkommen",
             "eigenanteil": {
                 "label": "Zumutbare Belastung (30%)",
-                "description": "⇒ Ihr voraussichtlicher Eigenanteil am Kita-Beitrag."
+                "description": "⇒ Ihr voraussichtlicher maximaler Eigenanteil am Kita-Beitrag."
             },
             "kitaKosten": {
-                "label": "Kitakosten Kind"
+                "label": "Kitakosten Kind",
+                "description": "Höhe des Kita-Beitrags für das Kind."
             },
             "kitaKostenGeschwister": {
                 "label": "Kitakosten Geschwisterkinder",
@@ -70,7 +71,8 @@
         },
         "wjhErgebnis": {
             "volleFoerderung": "Das Einkommen übersteigt die Einkommensgrenze nicht. Die Kosten werden voraussichtlich in voller Höhe übernommen.",
-            "teilfoerderung": "Das Einkommen liegt über der Einkommensgrenze. Die Kosten werden nur zum Teil gefördert.",
+            "ueberEinkommensgrenze": "Das Einkommen liegt über der Einkommensgrenze.",
+            "teilfoerderung": "Die Kosten werden nur zum Teil gefördert.",
             "foerderung": "Voraussichtlicher Zuschuss",
             "eigenanteil": "Voraussichtlicher Eigenanteil",
             "belastbaresEinkommen": "Belastbares Einkommen",

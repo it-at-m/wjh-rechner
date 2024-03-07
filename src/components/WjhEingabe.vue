@@ -248,7 +248,7 @@
             </v-col>
             <v-col v-else cols="12">
               <v-alert type="info" color="primary">
-                <span>{{ $t("app.wjhErgebnis.teilfoerderung") }}</span>
+                <span>{{ $t("app.wjhErgebnis.ueberEinkommensgrenze") }} {{ foerderung ? $t("app.wjhErgebnis.teilfoerderung") : '' }}</span>
                 <br />
                 <b>{{ $t("app.wjhEingabe.uebersteigendesEinkommen") }}: </b>
                 <span>{{ uebersteigendesEinkommenMinusGeschwister }}€</span>
@@ -272,6 +272,7 @@
                 prepend-inner-icon="mdi-currency-eur"
                 :label="$t('app.wjhEingabe.kitaKosten.label')"
                 :placeholder="$t('app.wjhEingabe.kitaKosten.label')"
+                :hint="$t('app.wjhEingabe.kitaKosten.description')"
                 type="number"
                 :rules="geldBetragRules"
               />
