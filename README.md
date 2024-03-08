@@ -8,57 +8,58 @@
 
 # WJH-Orientierungsrechner
 
-Online-Rechner zur Vorab-Berechnung der Förderung zur wirtschaftlichen Jugendhilfe (WJH) der Landeshauptstadt München.
+Online calculator for pre-calculation of possible funding for economic youth welfare ("Wirtschaftliche Jugendhilfe", WJH) of the City of Munich.
 
 <div align="center">
     <img src="docs/device_screen.png" width="200">
 </div>
 
-## Gebaut mit
+## Built with
 
 - TypeScript
-- Vue.js und Vuetify
+- Vue.js and Vuetify
 - Vite
 
 ## Roadmap
 
-_In Arbeit_
+_In progress_
 
-Siehe [offene Issues][issues-url] für eine Liste der vorgeschlagenen Features (und bekannten Probleme).
+See [open issues][issues-url] for a list of proposed features (and known issues).
 
-## Entwicklung
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Für weitere Infos siehe [getting-started](docs/getting-started.md).
+For more information, see [getting-started](docs/getting-started.md).
 
-## Dokumentation
+## Documentation
 
-_In Arbeit_
+_In progress_
 
-## Beitragen
+## Contributing
 
-Beiträge sind es, die die Open-Source-Community zu einem erstaunlichen Ort machen, um zu lernen, zu inspirieren und zu schaffen. Jeder Beitrag, den Sie leisten, wird sehr geschätzt.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Wenn Sie einen Vorschlag haben, der dies verbessern würde, öffnen Sie bitte ein Issue mit dem Tag "enhancement", forken Sie das Repo und erstellen Sie eine Pull-Anfrage. Sie können auch einfach ein Ticket mit dem Tag "enhancement" öffnen. Vergessen Sie nicht, dem Projekt einen Stern zu geben! Nochmals vielen Dank!
+If you have a suggestion that would make this better, please open an issue with the tag "enhancement", fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-1. Öffnen Sie ein Issue mit dem Tag "enhancement"
-2. Forken Sie das Projekt
-3. Erstellen Sie Ihren Feature-Branch (`git checkout -b feature/AmazingFeature`)
-4. Committen Sie Ihre Änderungen (`git commit -m 'Add some AmazingFeature'`)
-5. Pushen Sie auf den Branch (`git push origin feature/AmazingFeature`)
-6. Eröffnen Sie eine Pull-Request
+1. Open an issue with the tag "enhancement"
+2. Fork the Project
+3. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+4. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+5. Push to the Branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
 
-Mehr dazu im [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md).
+More about this in the [CODE_OF_CONDUCT](/CODE_OF_CONDUCT.md) file.
 
-## Lizenz
+## License
 
-Verteilt unter der MIT-Lizenz. Weitere Informationen finden Sie in [LICENSE](LICENSE).
+Distributed under the MIT License. See [LICENSE](LICENSE) file for more information.
 
-## Kontakt
+## Contact
 
 it@M - opensource@muenchen.de
 
