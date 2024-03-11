@@ -1,3 +1,7 @@
+.v-messages__message {
+    margin-bottom: 4px;
+}
+
 .required label::after {
     padding-left: 6px;
     color: rgb(var(--v-theme-error));
