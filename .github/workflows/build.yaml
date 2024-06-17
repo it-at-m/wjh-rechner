@@ -102,7 +102,7 @@ jobs:
             type=semver,pattern={{version}},value=${{ inputs.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
 
       - name: Build and push untested Docker image to GHCR
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ${{ env.NPM_PROJECT_ROOT }}
           push: ${{ github.event.inputs.version != '' }}
