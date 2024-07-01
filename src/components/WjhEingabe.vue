@@ -199,7 +199,28 @@
                 type="number"
                 :hint="$t('app.wjhEingabe.kitaKostenGeschwister.description')"
                 :rules="geldBetragRules"
-              />
+              >
+                <template #append-inner>
+                  <v-tooltip
+                    v-model="showKitakostenGeschwisterTooltip"
+                    :text="$t('app.wjhEingabe.kitaKostenGeschwister.additionalHint')"
+                    :aria-label="$t('app.wjhEingabe.kitaKostenGeschwister.additionalHint')"
+                    width="400px"
+                    open-on-click
+                    close-on-back
+                    :open-on-hover="false"
+                    @click:outside="showKitakostenGeschwisterTooltip = false"
+                  >
+                    <template #activator="{ props: activatorProps }">
+                      <v-icon
+                        v-bind="activatorProps"
+                        :aria-label="$t('app.wjhEingabe.kitaKostenGeschwister.tooltipLabel')"
+                        @click="showKitakostenGeschwisterTooltip = true"
+                      >mdi-information</v-icon>
+                    </template>
+                  </v-tooltip>
+                </template>
+              </v-text-field>
             </v-col>
             <v-col cols="12">
               <v-alert type="info" color="primary">
@@ -458,6 +479,7 @@ watch(() => props.isActive, (newValue : boolean) => {
 const showFamilieneinkommenTooltip = ref(false);
 const showEinkommensgrenzeTooltip = ref(false);
 const showVerwendeteMieteTooltip = ref(false);
+const showKitakostenGeschwisterTooltip = ref(false);
 
 // Grundbetrag der Einkommensgrenze inklusive des Familianzuschlags.
 const grundbetragMitFamilie = computed(() => {

@@ -66,7 +66,9 @@
             },
             "kitaKostenGeschwister": {
                 "label": "Kitakosten Geschwisterkinder",
-                "description": "Kita-Kosten der Geschwister werden ebenfalls berücksichtigt."
+                "description": "Kita-Kosten der Geschwister werden ebenfalls berücksichtigt.",
+                "additionalHint": "Kita-Kosten für Geschwisterkinder können berücksichtigt und im Orientierungsrechner angesetzt werden, soweit sie von Ihnen selbst getragen werden. Dies gilt jedoch nicht, wenn für die Kita-Kosten des Geschwisterkindes ebenfalls ein Antrag auf Wirtschaftliche Jugendhilfe gestellt wird.",
+                "tooltipLabel": "Erklärung zu den Kitakosten der Geschwister"
             }
         },
         "wjhErgebnis": {
