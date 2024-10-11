@@ -54,7 +54,7 @@
     "cypress-multi-reporters": "^1.6.3",
     "cypress-vite": "^1.4.2",
     "eslint": "^8.57.0",
-    "eslint-plugin-cypress": "^3.0.0",
+    "eslint-plugin-cypress": "^4.0.0",
     "eslint-plugin-vue": "^9.22.0",
     "eslint-plugin-vuetify": "^2.1.1",
     "jsdom": "^24.0.0",
