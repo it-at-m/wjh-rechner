@@ -48,7 +48,7 @@
     "@vue/test-utils": "^2.4.4",
     "@vue/tsconfig": "^0.7.0",
     "browserslist-to-esbuild": "^2.1.1",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.0.0",
     "cross-env": "^7.0.3",
     "cypress": "^13.6.6",
     "cypress-multi-reporters": "^1.6.3",
