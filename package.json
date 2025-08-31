@@ -57,7 +57,7 @@
     "eslint-plugin-cypress": "^3.0.0",
     "eslint-plugin-vue": "^9.22.0",
     "eslint-plugin-vuetify": "^2.1.1",
-    "jsdom": "^24.0.0",
+    "jsdom": "^26.0.0",
     "mocha-junit-reporter": "^2.2.1",
     "npm-run-all2": "^6.0.0",
     "prettier": "^3.2.5",
