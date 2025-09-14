@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Advance Security Policy as Code
         uses: advanced-security/policy-as-code@v2.11.1
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build the package
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       
       - uses: actions/setup-node@v4
         with:
@@ -72,7 +72,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
