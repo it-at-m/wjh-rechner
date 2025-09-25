@@ -1,6 +1,6 @@
 import { defineConfig } from "cypress";
 import vitePreprocessor from "cypress-vite";
-import codeCoverage from "@cypress/code-coverage/task";
+import codeCoverage from "@cypress/code-coverage/task.js";
 
 export default defineConfig({
   e2e: {
