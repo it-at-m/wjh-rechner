@@ -39,7 +39,7 @@ jobs:
       
       - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
           
       - name: install
         working-directory: ${{ env.NPM_PROJECT_ROOT }}
