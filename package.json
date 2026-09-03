@@ -67,7 +67,7 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-istanbul": "^6.0.0",
     "vite-plugin-vuetify": "^2.0.1",
-    "vitest": "^2.0.0",
+    "vitest": "^3.0.0",
     "vue-tsc": "^3.0.0"
   }
 }
