@@ -21,12 +21,12 @@ describe('WJH-Rechner', () => {
 
     cy.contains('Geschwisterkinder')
     cy.get('#kitakosten-geschwister-field').type('900')
-    cy.get('#eigenanteil').contains('172');
+    cy.get('#eigenanteil').contains('287');
     cy.get('#kitakosten-next-button').click()
     
-    cy.get('#ergebnis-eigenanteil').contains('172');
+    cy.get('#ergebnis-eigenanteil').contains('287');
     cy.get('#kitakosten-field').type('900')
-    cy.get('#ergebnis-foerderung').contains('728');
-    cy.get('#ergebnis-nicht-gefoerdert').contains('172');
+    cy.get('#ergebnis-foerderung').contains('613');
+    cy.get('#ergebnis-nicht-gefoerdert').contains('287');
   })
 })
