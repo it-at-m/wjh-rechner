@@ -19,6 +19,14 @@
           <br />
           <span>{{ $t("app.haftungsausschluss") }}</span>
         </v-alert>
+        <span>
+          <b>{{ $t("app.nachweispflicht.title") }}</b><br>
+          <b>{{ $t("app.nachweispflicht.description") }}</b>
+          <a href="https://stadt.muenchen.de/dam//Home/Stadtverwaltung/Sozialreferat/jugendamt/finanzielle-hilfen/WJH/Information-Nachweispflicht-bei-hohen-Kita-Kosten" target="_blank">{{$t("app.nachweispflicht.linkTitle")}}</a>
+          <b>{{ $t("app.nachweispflicht.description2") }}</b>
+          <a href="https://stadt.muenchen.de/dam/Home/Stadtverwaltung/Sozialreferat/jugendamt/finanzielle-hilfen/WJH/Information-zur-Aenderung-der-Berechnung-des-Kita-Zuschusses-ab-01.01.2027.pdf" target="_blank">{{$t("app.nachweispflicht.link2Title")}}</a>
+        </span>
+        <br />
         <span>{{ $t("app.einverstaendnisabfrage.message") }}</span>
       </v-card-text>
       <v-card-actions id="einverstaendnisabfrage-message" class="justify-end">

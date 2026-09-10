@@ -10,6 +10,15 @@
             "message": "Die Berechnung des möglichen Eigenanteils zur WJH findet ausschließlich auf dem Endgerät statt. Es werden weder personenbezogene Daten noch Gehaltsinformationen zum Webserver übermittelt.",
             "confirm": "Weiter zum Rechner"
         },
+        "nachweispflicht": {
+            "title": "Wichtiger Hinweis für die Kostenübernahme ab 01.01.2027 – ",
+            "description": " Hier zwei Links zu den PDF-Formularen ",
+            "description2": " und ",
+            "linkDescription": "Nachweispflicht bei hohen Kita-Kosten. Hier Link zu PDF-Formular ",
+            "link2Description": "Änderung der Berechnung des Kita-Zuschusses. Hier Link zu PDF-Formular ",
+            "linkTitle": "Informationen Nachweispflicht bei hohen Kita-Kosten",
+            "link2Title": "Information zur Änderung der Berechnung"
+        },
         "wjhEingabe": {
             "steps": {
                 "grunddaten": "Einkommen",
@@ -57,7 +66,7 @@
             },
             "uebersteigendesEinkommenReduziert": "Übersteigendes Einkommen",
             "eigenanteil": {
-                "label": "Zumutbare Belastung (30%)",
+                "label": "Zumutbare Belastung (50%)",
                 "description": "⇒ Ihr voraussichtlicher maximaler Eigenanteil am Kita-Beitrag."
             },
             "kitaKosten": {
