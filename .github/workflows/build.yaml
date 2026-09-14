@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build the package
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       
       - uses: actions/setup-node@v5
         with:
@@ -57,7 +57,7 @@ jobs:
           echo "$GITHUB_CONTEXT"
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Download artifacts
         uses: actions/download-artifact@v5
