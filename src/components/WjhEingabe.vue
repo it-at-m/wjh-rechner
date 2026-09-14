@@ -235,6 +235,11 @@
                   </span>
                 </div>
               </v-alert>
+              <span>
+                <b>{{ $t("app.nachweispflicht.title") }}</b><br>
+                <b>{{ $t("app.nachweispflicht.link2Description") }}</b>
+                <a href="https://stadt.muenchen.de/dam/Home/Stadtverwaltung/Sozialreferat/jugendamt/finanzielle-hilfen/WJH/Information-zur-Aenderung-der-Berechnung-des-Kita-Zuschusses-ab-01.01.2027.pdf" target="_blank">{{$t("app.nachweispflicht.link2Title")}}</a>
+              </span>
             </v-col>
           </v-row>
           <v-row justify="space-between" class="px-3">
@@ -297,6 +302,11 @@
                 type="number"
                 :rules="geldBetragRules"
               />
+              <span>
+                <b>{{ $t("app.nachweispflicht.title") }}</b><br>
+                <b>{{ $t("app.nachweispflicht.linkDescription") }}</b>
+                <a href="https://stadt.muenchen.de/dam//Home/Stadtverwaltung/Sozialreferat/jugendamt/finanzielle-hilfen/WJH/Information-Nachweispflicht-bei-hohen-Kita-Kosten" target="_blank">{{$t("app.nachweispflicht.linkTitle")}}</a>
+              </span>
             </v-col>
             <v-col cols="12">
               <v-progress-linear
@@ -545,7 +555,7 @@ const uebersteigendesEinkommenMinusGeschwister = computed(() => {
 
 // Anteil des Einkommens, der für die Kita-Kosten belastet wird.
 const eigenanteil = computed(() => {
-  return Math.round(uebersteigendesEinkommenMinusGeschwister.value * 0.3);
+  return Math.round(uebersteigendesEinkommenMinusGeschwister.value * 0.5);
 })
 
 // Anteil der Kitakosten, die vorraussichtlich selbst gezahlt werden müssen.
