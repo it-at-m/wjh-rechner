@@ -12,10 +12,9 @@
         },
         "nachweispflicht": {
             "title": "Wichtiger Hinweis für die Kostenübernahme ab 01.01.2027 – ",
-            "description": " Hier zwei Links zu den PDF-Formularen ",
             "description2": " und ",
-            "linkDescription": "Nachweispflicht bei hohen Kita-Kosten. Hier Link zu PDF-Formular ",
-            "link2Description": "Änderung der Berechnung des Kita-Zuschusses. Hier Link zu PDF-Formular ",
+            "linkDescription": "Nachweispflicht bei hohen Kita-Kosten ",
+            "link2Description": "Änderung der Berechnung des Kita-Zuschusses ",
             "linkTitle": "Informationen Nachweispflicht bei hohen Kita-Kosten",
             "link2Title": "Information zur Änderung der Berechnung"
         },

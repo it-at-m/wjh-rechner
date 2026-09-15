@@ -236,7 +236,7 @@
                 </div>
               </v-alert>
               <span>
-                <b>{{ $t("app.nachweispflicht.title") }}</b><br>
+                <b>{{ $t("app.nachweispflicht.title") }}</b>
                 <b>{{ $t("app.nachweispflicht.link2Description") }}</b>
                 <a href="https://stadt.muenchen.de/dam/Home/Stadtverwaltung/Sozialreferat/jugendamt/finanzielle-hilfen/WJH/Information-zur-Aenderung-der-Berechnung-des-Kita-Zuschusses-ab-01.01.2027.pdf" target="_blank">{{$t("app.nachweispflicht.link2Title")}}</a>
               </span>
@@ -303,7 +303,7 @@
                 :rules="geldBetragRules"
               />
               <span>
-                <b>{{ $t("app.nachweispflicht.title") }}</b><br>
+                <b>{{ $t("app.nachweispflicht.title") }}</b>
                 <b>{{ $t("app.nachweispflicht.linkDescription") }}</b>
                 <a href="https://stadt.muenchen.de/dam//Home/Stadtverwaltung/Sozialreferat/jugendamt/finanzielle-hilfen/WJH/Information-Nachweispflicht-bei-hohen-Kita-Kosten" target="_blank">{{$t("app.nachweispflicht.linkTitle")}}</a>
               </span>
